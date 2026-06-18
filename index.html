@@ -7,217 +7,166 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
 <style>
   :root {
-    --bg: #0f1117;
-    --surface: #1a1d27;
-    --surface2: #22263a;
-    --border: rgba(255,255,255,0.08);
-    --border2: rgba(255,255,255,0.15);
-    --text: #e8eaf0;
-    --text-muted: #8891a8;
-    --text-dim: #555d75;
-    --accent: #6c63ff;
-    --accent-light: #8b84ff;
-    --accent-bg: rgba(108,99,255,0.12);
-    --green: #22c55e;
-    --green-bg: rgba(34,197,94,0.12);
-    --amber: #f59e0b;
-    --amber-bg: rgba(245,158,11,0.12);
-    --red: #ef4444;
-    --red-bg: rgba(239,68,68,0.12);
-    --blue: #3b82f6;
-    --blue-bg: rgba(59,130,246,0.12);
-    --teal: #14b8a6;
-    --teal-bg: rgba(20,184,166,0.12);
-    --pink: #ec4899;
-    --pink-bg: rgba(236,72,153,0.12);
-    --r: 8px;
-    --r-lg: 12px;
+    --bg:#0f1117;--surface:#1a1d27;--surface2:#22263a;
+    --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.15);
+    --text:#e8eaf0;--text-muted:#8891a8;--text-dim:#555d75;
+    --accent:#6c63ff;--accent-light:#8b84ff;--accent-bg:rgba(108,99,255,0.12);
+    --green:#22c55e;--green-bg:rgba(34,197,94,0.12);
+    --amber:#f59e0b;--amber-bg:rgba(245,158,11,0.12);
+    --red:#ef4444;--red-bg:rgba(239,68,68,0.12);
+    --blue:#3b82f6;--blue-bg:rgba(59,130,246,0.12);
+    --teal:#14b8a6;--teal-bg:rgba(20,184,166,0.12);
+    --pink:#ec4899;--pink-bg:rgba(236,72,153,0.12);
+    --r:8px;--r-lg:12px;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; font-size: 14px; min-height: 100vh; }
-  a { color: var(--accent-light); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  /* Layout */
-  .shell { display: flex; height: 100vh; overflow: hidden; }
-  .sidebar { width: 220px; flex-shrink: 0; background: var(--surface); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow-y: auto; }
-  .main { flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
-  .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
-  .content { padding: 24px; flex: 1; }
-
-  /* Sidebar */
-  .sidebar-logo { padding: 20px 16px 12px; }
-  .logo-badge { background: var(--accent); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: 1px; padding: 3px 7px; border-radius: 4px; display: inline-block; margin-bottom: 4px; }
-  .logo-title { font-size: 15px; font-weight: 600; color: var(--text); }
-  .logo-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
-  .nav-section { padding: 8px 10px 4px; font-size: 10px; font-weight: 600; letter-spacing: 1px; color: var(--text-dim); text-transform: uppercase; }
-  .nav-item { display: flex; align-items: center; gap: 9px; padding: 8px 14px; border-radius: var(--r); margin: 1px 8px; cursor: pointer; color: var(--text-muted); font-size: 13px; transition: all 0.15s; }
-  .nav-item:hover { background: var(--surface2); color: var(--text); }
-  .nav-item.active { background: var(--accent-bg); color: var(--accent-light); }
-  .nav-item i { font-size: 16px; }
-  .nav-badge { margin-left: auto; background: var(--accent-bg); color: var(--accent-light); font-size: 10px; font-weight: 600; padding: 1px 6px; border-radius: 10px; }
-  .sidebar-footer { margin-top: auto; padding: 12px; border-top: 1px solid var(--border); }
-
-  /* Topbar */
-  .topbar-title { font-size: 15px; font-weight: 600; }
-  .topbar-right { display: flex; align-items: center; gap: 12px; }
-  .search-box { background: var(--surface2); border: 1px solid var(--border); border-radius: var(--r); padding: 6px 12px 6px 32px; color: var(--text); font-size: 13px; position: relative; width: 200px; }
-  .search-wrap { position: relative; }
-  .search-wrap i { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--text-dim); font-size: 15px; pointer-events: none; }
-  .avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: #fff; }
-  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: var(--r); border: 1px solid var(--border2); background: transparent; color: var(--text); font-size: 13px; cursor: pointer; transition: all 0.15s; }
-  .btn:hover { background: var(--surface2); }
-  .btn-primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .btn-primary:hover { background: var(--accent-light); border-color: var(--accent-light); }
-  .btn i { font-size: 15px; }
-
-  /* Cards */
-  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 20px; }
-  .card-sm { padding: 14px 16px; }
-
-  /* Stats row */
-  .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 24px; }
-  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 16px 20px; }
-  .stat-label { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-dim); margin-bottom: 8px; }
-  .stat-value { font-size: 28px; font-weight: 700; line-height: 1; }
-  .stat-sub { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
-  .stat-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
-
-  /* Section headers */
-  .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-  .section-title { font-size: 15px; font-weight: 600; }
-  .section-actions { display: flex; gap: 8px; align-items: center; }
-
-  /* Status badges */
-  .badge { display: inline-flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; }
-  .badge-green { background: var(--green-bg); color: var(--green); }
-  .badge-amber { background: var(--amber-bg); color: var(--amber); }
-  .badge-red { background: var(--red-bg); color: var(--red); }
-  .badge-blue { background: var(--blue-bg); color: var(--blue); }
-  .badge-teal { background: var(--teal-bg); color: var(--teal); }
-  .badge-pink { background: var(--pink-bg); color: var(--pink); }
-  .badge-gray { background: rgba(255,255,255,0.06); color: var(--text-muted); }
-  .badge-accent { background: var(--accent-bg); color: var(--accent-light); }
-
-  /* Projects table */
-  .table-wrap { overflow-x: auto; }
-  table { width: 100%; border-collapse: collapse; }
-  th { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: var(--text-dim); padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
-  td { padding: 13px 14px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: middle; }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: var(--surface2); }
-  .action-btns { display: flex; gap: 6px; opacity: 0; transition: opacity 0.15s; }
-  tr:hover .action-btns { opacity: 1; }
-  .icon-btn { width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border); background: transparent; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-muted); transition: all 0.15s; }
-  .icon-btn:hover { background: var(--surface2); color: var(--text); border-color: var(--border2); }
-  .icon-btn.danger:hover { background: var(--red-bg); color: var(--red); border-color: rgba(239,68,68,0.3); }
-  .customer-name { font-weight: 500; color: var(--text); display: flex; align-items: center; gap: 8px; }
-  .cust-avatar { width: 26px; height: 26px; border-radius: 6px; background: var(--accent-bg); color: var(--accent-light); display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; flex-shrink: 0; }
-
-  /* Two column layout */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
-  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
-
-  .mini-badges { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px; }
-  .mini-badge { font-size: 10px; padding: 1px 6px; border-radius: 10px; background: var(--surface); border: 1px solid var(--border); color: var(--text-muted); }
-
-  /* Timeline / delivery */
-  .delivery-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); }
-  .delivery-item:last-child { border-bottom: none; }
-  .delivery-date { font-size: 11px; font-weight: 600; color: var(--text-dim); width: 40px; flex-shrink: 0; text-align: center; line-height: 1.3; }
-  .delivery-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; }
-  .delivery-body { flex: 1; }
-  .delivery-title { font-size: 13px; font-weight: 500; }
-  .delivery-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
-
-  /* Risk items */
-  .risk-item { display: flex; gap: 10px; padding: 10px 12px; border-radius: var(--r); background: var(--surface2); margin-bottom: 8px; }
-  .risk-icon { font-size: 16px; margin-top: 1px; flex-shrink: 0; }
-  .risk-title { font-size: 13px; font-weight: 500; }
-  .risk-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
-
-  /* Modal */
-  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; }
-  .modal-overlay.open { display: flex; }
-  .modal { background: var(--surface); border: 1px solid var(--border2); border-radius: var(--r-lg); width: 560px; max-width: 95vw; max-height: 90vh; overflow-y: auto; }
-  .modal-header { padding: 20px 24px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-  .modal-title { font-size: 16px; font-weight: 600; }
-  .modal-body { padding: 20px 24px; }
-  .modal-footer { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px; }
-  .form-group { margin-bottom: 16px; }
-  .form-label { font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 6px; display: block; letter-spacing: 0.3px; }
-  .form-input, .form-select, .form-textarea { width: 100%; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r); padding: 8px 12px; color: var(--text); font-size: 13px; outline: none; }
-  .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--accent); }
-  .form-textarea { resize: vertical; min-height: 80px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .form-select option { background: var(--surface2); }
-
-  /* Tabs */
-  .tabs { display: flex; gap: 2px; padding: 4px; background: var(--surface2); border-radius: var(--r); }
-  .tab { padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; color: var(--text-muted); transition: all 0.15s; }
-  .tab.active { background: var(--surface); color: var(--text); font-weight: 500; }
-
-  /* Progress bar */
-  .progress-bar { height: 4px; background: var(--surface2); border-radius: 2px; overflow: hidden; margin-top: 6px; }
-  .progress-fill { height: 100%; border-radius: 2px; transition: width 0.3s; }
-
-  /* Scrollable */
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: transparent; }
-  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
-
-  /* Page views */
-  .page { display: none; }
-  .page.active { display: block; }
-
-  /* Filter row */
-  .filter-row { display: flex; gap: 8px; margin-bottom: 16px; align-items: center; }
-  .filter-chip { padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border); background: transparent; color: var(--text-muted); font-size: 12px; cursor: pointer; transition: all 0.15s; }
-  .filter-chip:hover { border-color: var(--border2); color: var(--text); }
-  .filter-chip.active { background: var(--accent-bg); border-color: var(--accent); color: var(--accent-light); }
-
-  .toast { position: fixed; bottom: 20px; right: 20px; background: var(--surface); border: 1px solid var(--border2); border-radius: var(--r); padding: 12px 16px; font-size: 13px; z-index: 2000; display: flex; align-items: center; gap: 10px; transform: translateY(80px); opacity: 0; transition: all 0.3s; }
-  .toast.show { transform: translateY(0); opacity: 1; }
-  .toast i { font-size: 16px; color: var(--green); }
-
-  .empty { text-align: center; padding: 40px; color: var(--text-muted); font-size: 13px; }
-  .empty i { font-size: 36px; color: var(--text-dim); display: block; margin-bottom: 10px; }
-
-  .tag-input-wrap { display: flex; flex-wrap: wrap; gap: 6px; padding: 6px 10px; background: var(--surface2); border: 1px solid var(--border2); border-radius: var(--r); min-height: 40px; cursor: text; }
-  .tag { display: inline-flex; align-items: center; gap: 4px; background: var(--accent-bg); color: var(--accent-light); font-size: 11px; padding: 2px 8px; border-radius: 10px; }
-  .tag button { background: none; border: none; color: inherit; cursor: pointer; padding: 0; line-height: 1; font-size: 13px; }
-
-  .config-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
-  .pill { font-size: 11px; padding: 3px 9px; border-radius: 20px; border: 1px solid var(--border); color: var(--text-muted); }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',-apple-system,sans-serif;font-size:14px;min-height:100vh;}
+  a{color:var(--accent-light);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .shell{display:flex;height:100vh;overflow:hidden;}
+  .sidebar{width:220px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow-y:auto;}
+  .main{flex:1;overflow-y:auto;display:flex;flex-direction:column;}
+  .topbar{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+  .content{padding:24px;flex:1;}
+  .sidebar-logo{padding:20px 16px 12px;}
+  .logo-badge{background:var(--accent);color:#fff;font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 7px;border-radius:4px;display:inline-block;margin-bottom:4px;}
+  .logo-title{font-size:15px;font-weight:600;color:var(--text);}
+  .logo-sub{font-size:11px;color:var(--text-muted);margin-top:1px;}
+  .nav-section{padding:8px 10px 4px;font-size:10px;font-weight:600;letter-spacing:1px;color:var(--text-dim);text-transform:uppercase;}
+  .nav-item{display:flex;align-items:center;gap:9px;padding:8px 14px;border-radius:var(--r);margin:1px 8px;cursor:pointer;color:var(--text-muted);font-size:13px;transition:all 0.15s;}
+  .nav-item:hover{background:var(--surface2);color:var(--text);}
+  .nav-item.active{background:var(--accent-bg);color:var(--accent-light);}
+  .nav-item i{font-size:16px;}
+  .nav-badge{margin-left:auto;background:var(--accent-bg);color:var(--accent-light);font-size:10px;font-weight:600;padding:1px 6px;border-radius:10px;}
+  .sidebar-footer{margin-top:auto;padding:12px;border-top:1px solid var(--border);}
+  .topbar-title{font-size:15px;font-weight:600;}
+  .topbar-right{display:flex;align-items:center;gap:12px;}
+  .search-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--r);padding:6px 12px 6px 32px;color:var(--text);font-size:13px;width:200px;outline:none;}
+  .search-wrap{position:relative;}
+  .search-wrap i{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:15px;pointer-events:none;}
+  .avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--r);border:1px solid var(--border2);background:transparent;color:var(--text);font-size:13px;cursor:pointer;transition:all 0.15s;}
+  .btn:hover{background:var(--surface2);}
+  .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff;}
+  .btn-primary:hover{background:var(--accent-light);border-color:var(--accent-light);}
+  .btn-sm{padding:4px 10px;font-size:12px;}
+  .btn-danger{background:var(--red-bg);border-color:rgba(239,68,68,0.3);color:var(--red);}
+  .btn-danger:hover{background:var(--red);color:#fff;}
+  .btn i{font-size:15px;}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:20px;}
+  .card-sm{padding:14px 16px;}
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:16px 20px;}
+  .stat-label{font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;}
+  .stat-value{font-size:28px;font-weight:700;line-height:1;}
+  .stat-sub{font-size:12px;color:var(--text-muted);margin-top:4px;}
+  .stat-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;}
+  .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+  .section-title{font-size:15px;font-weight:600;}
+  .badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 8px;border-radius:20px;}
+  .badge-green{background:var(--green-bg);color:var(--green);}
+  .badge-amber{background:var(--amber-bg);color:var(--amber);}
+  .badge-red{background:var(--red-bg);color:var(--red);}
+  .badge-blue{background:var(--blue-bg);color:var(--blue);}
+  .badge-teal{background:var(--teal-bg);color:var(--teal);}
+  .badge-gray{background:rgba(255,255,255,0.06);color:var(--text-muted);}
+  .badge-accent{background:var(--accent-bg);color:var(--accent-light);}
+  .table-wrap{overflow-x:auto;}
+  table{width:100%;border-collapse:collapse;}
+  th{font-size:11px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--text-dim);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap;}
+  th.th-action{width:90px;}
+  td{padding:11px 14px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:middle;}
+  tr:last-child td{border-bottom:none;}
+  tr:hover td{background:var(--surface2);}
+  .action-btns{display:flex;gap:6px;align-items:center;}
+  .icon-btn{width:28px;height:28px;border-radius:6px;border:1px solid var(--border);background:transparent;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-muted);transition:all 0.15s;flex-shrink:0;}
+  .icon-btn:hover{background:var(--surface2);color:var(--text);border-color:var(--border2);}
+  .icon-btn.danger:hover{background:var(--red-bg);color:var(--red);border-color:rgba(239,68,68,0.3);}
+  .act-btn{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:20px;border:none;font-size:12px;font-weight:600;cursor:pointer;transition:all 0.15s;white-space:nowrap;}
+  .act-btn-edit{background:var(--green-bg);color:var(--green);}
+  .act-btn-edit:hover{background:var(--green);color:#fff;}
+  .act-btn-delete{background:var(--red-bg);color:var(--red);}
+  .act-btn-delete:hover{background:var(--red);color:#fff;}
+  .act-btn i{font-size:13px;}
+  .customer-name{font-weight:500;color:var(--text);display:flex;align-items:center;gap:8px;}
+  .cust-avatar{width:26px;height:26px;border-radius:6px;background:var(--accent-bg);color:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0;}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;}
+  .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+  .mini-badges{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px;}
+  .mini-badge{font-size:10px;padding:1px 6px;border-radius:10px;background:var(--surface);border:1px solid var(--border);color:var(--text-muted);}
+  .delivery-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+  .delivery-item:last-child{border-bottom:none;}
+  .delivery-date{font-size:11px;font-weight:600;color:var(--text-dim);width:40px;flex-shrink:0;text-align:center;line-height:1.3;}
+  .delivery-dot{width:8px;height:8px;border-radius:50%;margin-top:4px;flex-shrink:0;}
+  .delivery-body{flex:1;}
+  .delivery-title{font-size:13px;font-weight:500;}
+  .delivery-sub{font-size:12px;color:var(--text-muted);margin-top:2px;}
+  .risk-card{display:flex;gap:12px;padding:14px 16px;background:var(--surface2);border-radius:var(--r);border-left:3px solid transparent;}
+  .risk-card.high{border-left-color:var(--red);}
+  .risk-card.medium{border-left-color:var(--amber);}
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;align-items:center;justify-content:center;}
+  .modal-overlay.open{display:flex;}
+  .modal{background:var(--surface);border:1px solid var(--border2);border-radius:var(--r-lg);width:580px;max-width:95vw;max-height:92vh;overflow-y:auto;}
+  .modal-header{padding:20px 24px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+  .modal-title{font-size:16px;font-weight:600;}
+  .modal-body{padding:20px 24px;}
+  .modal-footer{padding:16px 24px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:10px;}
+  .form-group{margin-bottom:16px;}
+  .form-label{font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:6px;display:block;letter-spacing:0.3px;}
+  .form-input,.form-select,.form-textarea{width:100%;background:var(--surface2);border:1px solid var(--border2);border-radius:var(--r);padding:8px 12px;color:var(--text);font-size:13px;outline:none;font-family:inherit;}
+  .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--accent);}
+  .form-textarea{resize:vertical;min-height:76px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .form-select option{background:var(--surface2);}
+  .page{display:none;}
+  .page.active{display:block;}
+  .filter-row{display:flex;gap:8px;margin-bottom:16px;align-items:center;flex-wrap:wrap;}
+  .filter-chip{padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:12px;cursor:pointer;transition:all 0.15s;}
+  .filter-chip:hover{border-color:var(--border2);color:var(--text);}
+  .filter-chip.active{background:var(--accent-bg);border-color:var(--accent);color:var(--accent-light);}
+  .toast{position:fixed;bottom:20px;right:20px;background:var(--surface);border:1px solid var(--border2);border-radius:var(--r);padding:12px 16px;font-size:13px;z-index:2000;display:flex;align-items:center;gap:10px;transform:translateY(80px);opacity:0;transition:all 0.3s;}
+  .toast.show{transform:translateY(0);opacity:1;}
+  .toast i{font-size:16px;color:var(--green);}
+  .empty{text-align:center;padding:40px;color:var(--text-muted);font-size:13px;}
+  .empty i{font-size:36px;color:var(--text-dim);display:block;margin-bottom:10px;}
+  .config-pills{display:flex;flex-wrap:wrap;gap:5px;}
+  .pill{font-size:11px;padding:3px 9px;border-radius:20px;border:1px solid var(--border);color:var(--text-muted);}
+  .add-col-btn{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:var(--r);border:1px dashed var(--border2);background:transparent;color:var(--text-dim);font-size:11px;cursor:pointer;white-space:nowrap;transition:all 0.15s;}
+  .add-col-btn:hover{color:var(--accent-light);border-color:var(--accent);}
+  .editable-cell{cursor:pointer;min-width:60px;}
+  .editable-cell:hover{background:rgba(108,99,255,0.07);border-radius:4px;}
+  .inline-edit{background:var(--surface2);border:1px solid var(--accent);border-radius:5px;color:var(--text);font-size:13px;padding:3px 7px;width:100%;min-width:80px;outline:none;font-family:inherit;}
+  ::-webkit-scrollbar{width:6px;height:6px;}
+  ::-webkit-scrollbar-track{background:transparent;}
+  ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px;}
+  .section-toolbar{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+  .divider{height:1px;background:var(--border);margin:16px 0;}
+  .col-name-tag{display:inline-flex;align-items:center;gap:6px;background:var(--surface2);padding:4px 10px;border-radius:var(--r);font-size:12px;border:1px solid var(--border);}
+  .col-name-tag button{background:none;border:none;color:var(--text-dim);cursor:pointer;font-size:14px;line-height:1;padding:0;}
+  .col-name-tag button:hover{color:var(--red);}
 </style>
 </head>
 <body>
 <div class="shell">
-  <!-- Sidebar -->
   <nav class="sidebar">
     <div class="sidebar-logo">
       <div class="logo-badge">VELOU</div>
       <div class="logo-title">Tech Lead Hub</div>
       <div class="logo-sub">AI Ops Dashboard</div>
     </div>
-
     <div class="nav-section">Overview</div>
-    <div class="nav-item active" onclick="showPage('dashboard', this)"><i class="ti ti-layout-dashboard"></i> Dashboard</div>
-    <div class="nav-item" onclick="showPage('projects', this)"><i class="ti ti-folder"></i> Projects <span class="nav-badge" id="proj-count">11</span></div>
-
+    <div class="nav-item active" onclick="showPage('dashboard',this)"><i class="ti ti-layout-dashboard"></i> Dashboard</div>
+    <div class="nav-item" onclick="showPage('projects',this)"><i class="ti ti-folder"></i> Projects <span class="nav-badge" id="proj-count">15</span></div>
     <div class="nav-section">Work</div>
-    <div class="nav-item" onclick="showPage('deliveries', this)"><i class="ti ti-calendar"></i> Deliveries</div>
-    <div class="nav-item" onclick="showPage('risks', this)"><i class="ti ti-alert-triangle"></i> Risks & Blockers <span class="nav-badge" id="risk-count">7</span></div>
-
+    <div class="nav-item" onclick="showPage('deliveries',this)"><i class="ti ti-calendar"></i> Deliveries</div>
+    <div class="nav-item" onclick="showPage('risks',this)"><i class="ti ti-alert-triangle"></i> Risks &amp; Blockers <span class="nav-badge" id="risk-count">7</span></div>
     <div class="nav-section">Config</div>
-    <div class="nav-item" onclick="showPage('customers', this)"><i class="ti ti-building-store"></i> Customer Config</div>
-
+    <div class="nav-item" onclick="showPage('customers',this)"><i class="ti ti-building-store"></i> Customer Config</div>
     <div class="sidebar-footer">
-      <div style="font-size: 11px; color: var(--text-dim);">Last synced: just now</div>
+      <div style="font-size:11px;color:var(--text-dim);">Last synced: just now</div>
     </div>
   </nav>
 
-  <!-- Main -->
   <div class="main">
     <div class="topbar">
       <div class="topbar-title" id="page-title">Dashboard</div>
@@ -226,20 +175,20 @@
           <i class="ti ti-search"></i>
           <input class="search-box" type="text" placeholder="Search projects, customers…" oninput="globalSearch(this.value)">
         </div>
-        <button class="btn btn-primary" onclick="openAddModal()"><i class="ti ti-plus"></i> Add Project</button>
+        <button class="btn btn-primary" onclick="openAddProjectModal()"><i class="ti ti-plus"></i> Add Project</button>
         <div class="avatar">TL</div>
       </div>
     </div>
 
     <div class="content">
 
-      <!-- DASHBOARD PAGE -->
+      <!-- DASHBOARD -->
       <div class="page active" id="page-dashboard">
         <div class="stats-grid">
           <div class="stat-card">
             <div class="stat-label">Total Projects</div>
-            <div class="stat-value" id="stat-total">11</div>
-            <div class="stat-sub">3 internal, 8 customer</div>
+            <div class="stat-value" id="stat-total">15</div>
+            <div class="stat-sub">3 internal · 12 customer</div>
           </div>
           <div class="stat-card">
             <div class="stat-label">Active Onboarding</div>
@@ -248,363 +197,881 @@
           </div>
           <div class="stat-card">
             <div class="stat-label">Open Risks</div>
-            <div class="stat-value" style="color:var(--amber)" id="stat-risks">7</div>
+            <div class="stat-value" style="color:var(--amber)" id="stat-risks-count">7</div>
             <div class="stat-sub">2 high · 5 medium</div>
           </div>
         </div>
-
         <div class="two-col">
-          <!-- Recent projects -->
           <div class="card">
             <div class="section-header">
               <div class="section-title">Project Status Overview</div>
-              <button class="btn" onclick="showPage('projects', document.querySelector('[onclick*=projects]'))"><i class="ti ti-arrow-right"></i></button>
+              <button class="btn btn-sm" onclick="showPage('projects',document.querySelector('[onclick*=projects]'))"><i class="ti ti-arrow-right"></i></button>
             </div>
-            <div id="dashboard-projects-list"></div>
+            <div id="dash-proj-list"></div>
           </div>
-
-          <!-- Upcoming deliveries -->
           <div class="card">
             <div class="section-header">
               <div class="section-title">Upcoming Deliveries</div>
               <span class="badge badge-amber">Jenson Phase 3</span>
             </div>
-            <div>
-              <div class="delivery-item">
-                <div class="delivery-date">Jun<br>16</div>
-                <div class="delivery-dot" style="background:var(--amber)"></div>
-                <div class="delivery-body">
-                  <div class="delivery-title">Jenson Set 2 — Bike Tires, Tubes, Wheels</div>
-                  <div class="delivery-sub">ETA: June 16 · Owner: Eshan, Tashini, Raveen</div>
-                </div>
-              </div>
-              <div class="delivery-item">
-                <div class="delivery-date">Jun<br>18</div>
-                <div class="delivery-dot" style="background:var(--amber)"></div>
-                <div class="delivery-body">
-                  <div class="delivery-title">MudPie — New feed data delivery</div>
-                  <div class="delivery-sub">ETA: June 18 · Owner: Bimalka / Malsha</div>
-                </div>
-              </div>
-              <div class="delivery-item">
-                <div class="delivery-date">Jun<br>23</div>
-                <div class="delivery-dot" style="background:var(--text-dim)"></div>
-                <div class="delivery-body">
-                  <div class="delivery-title">Jenson Set 3 — Cables, Forks, Grips</div>
-                  <div class="delivery-sub">ETA: June 23 · Owner: Eshan, Tashini, Raveen</div>
-                </div>
-              </div>
-              <div class="delivery-item">
-                <div class="delivery-date">Jun<br>30</div>
-                <div class="delivery-dot" style="background:var(--text-dim)"></div>
-                <div class="delivery-body">
-                  <div class="delivery-title">Jenson Set 4 — Handlebars, Seatposts</div>
-                  <div class="delivery-sub">ETA: June 30</div>
-                </div>
-              </div>
-              <div class="delivery-item">
-                <div class="delivery-date">Jul<br>15</div>
-                <div class="delivery-dot" style="background:var(--teal)"></div>
-                <div class="delivery-body">
-                  <div class="delivery-title">MudPie — Enriched schema with additionalProperties</div>
-                  <div class="delivery-sub">ETA: July 15 · Schema Markup project</div>
-                </div>
-              </div>
-              <div class="delivery-item">
-                <div class="delivery-date">Jul<br>31</div>
-                <div class="delivery-dot" style="background:var(--red)"></div>
-                <div class="delivery-body">
-                  <div class="delivery-title">Jenson — Pending taxonomies deadline</div>
-                  <div class="delivery-sub">Camp-cookware, Camp-tableware + 4 more · BLOCKER</div>
-                </div>
-              </div>
-            </div>
+            <div id="dash-deliveries-list"></div>
           </div>
         </div>
-
-        <!-- Open risks summary -->
         <div class="card">
           <div class="section-header">
-            <div class="section-title">Open Risks & Blockers</div>
-            <button class="btn" onclick="showPage('risks', document.querySelector('[onclick*=risks]'))">View all <i class="ti ti-arrow-right"></i></button>
+            <div class="section-title">Open Risks &amp; Blockers</div>
+            <button class="btn btn-sm" onclick="showPage('risks',document.querySelector('[onclick*=risks]'))">View all <i class="ti ti-arrow-right"></i></button>
           </div>
-          <div class="three-col">
-            <div class="risk-item"><i class="ti ti-alert-triangle risk-icon" style="color:var(--red)"></i><div><div class="risk-title">Akira config uses wrong prompt</div><div class="risk-sub">LoveShackFancy refs in content · Fix before go-live</div></div></div>
-            <div class="risk-item"><i class="ti ti-clock risk-icon" style="color:var(--amber)"></i><div><div class="risk-title">Jenson taxonomy blockers</div><div class="risk-sub">6 categories not finalized · Deadline Jul 31</div></div></div>
-            <div class="risk-item"><i class="ti ti-x risk-icon" style="color:var(--red)"></i><div><div class="risk-title">Thuma image enrichment blocked</div><div class="risk-sub">Products missing images · PLA-1110 open</div></div></div>
-            <div class="risk-item"><i class="ti ti-alert-circle risk-icon" style="color:var(--amber)"></i><div><div class="risk-title">Master taxonomy stalled</div><div class="risk-sub">No resource allocated · Checklist not finalized</div></div></div>
-            <div class="risk-item"><i class="ti ti-file-x risk-icon" style="color:var(--amber)"></i><div><div class="risk-title">PDP CSV not Excel-compatible</div><div class="risk-sub">ONB-321 open · Affects exporter pipeline</div></div></div>
-            <div class="risk-item"><i class="ti ti-box risk-icon" style="color:var(--amber)"></i><div><div class="risk-title">MudPie PDE delivery unfinalized</div><div class="risk-sub">SFTP not supported for PDE · Dinuka to resolve</div></div></div>
-          </div>
+          <div class="three-col" id="dash-risks-list"></div>
         </div>
       </div>
 
       <!-- PROJECTS PAGE -->
       <div class="page" id="page-projects">
-        <div class="filter-row">
-          <button class="filter-chip active" onclick="filterProjects('all', this)">All</button>
-          <button class="filter-chip" onclick="filterProjects('live', this)">Live</button>
-          <button class="filter-chip" onclick="filterProjects('in-progress', this)">In Progress</button>
-          <button class="filter-chip" onclick="filterProjects('pending', this)">Pending Feedback</button>
-          <button class="filter-chip" onclick="filterProjects('inactive', this)">Inactive</button>
-          <button class="filter-chip" onclick="filterProjects('internal', this)">Internal</button>
+        <div class="section-toolbar">
+          <div class="filter-row" style="margin:0;flex:1">
+            <button class="filter-chip active" onclick="filterProjects('all',this)">All</button>
+            <button class="filter-chip" onclick="filterProjects('live',this)">Live</button>
+            <button class="filter-chip" onclick="filterProjects('in-progress',this)">In Progress</button>
+            <button class="filter-chip" onclick="filterProjects('pending',this)">Pending</button>
+            <button class="filter-chip" onclick="filterProjects('blocked',this)">Blocked</button>
+            <button class="filter-chip" onclick="filterProjects('inactive',this)">Inactive</button>
+            <button class="filter-chip" onclick="filterProjects('internal',this)">Internal</button>
+          </div>
+          <button class="add-col-btn" onclick="openAddColumnModal('projects')"><i class="ti ti-column-insert-right"></i> Add Column</button>
         </div>
         <div class="card" style="padding:0">
           <div class="table-wrap">
             <table id="projects-table">
-              <thead>
-                <tr>
-                  <th>Project / Customer</th>
-                  <th>Type</th>
-                  <th>Status</th>
-                  <th>Export Type</th>
-                  <th>Content Types</th>
-                  <th>Key Owners</th>
-                  <th>Next Step</th>
-                  <th></th>
-                </tr>
-              </thead>
+              <thead id="projects-thead"></thead>
               <tbody id="projects-tbody"></tbody>
             </table>
+          </div>
+          <div style="padding:12px 16px;border-top:1px solid var(--border)">
+            <button class="btn btn-sm" onclick="openAddProjectModal()"><i class="ti ti-plus"></i> Add Row</button>
           </div>
         </div>
       </div>
 
       <!-- DELIVERIES PAGE -->
       <div class="page" id="page-deliveries">
-        <div class="card">
-          <div class="section-header">
-            <div class="section-title">Jenson GSA — Phase 3 Delivery Plan</div>
-            <a href="https://linear.app/velou/project/jenson-gsa-1e4fa9a7c0aa/overview" target="_blank" class="btn"><i class="ti ti-external-link"></i> Linear</a>
+        <div class="section-toolbar">
+          <div class="section-title" style="flex:1">Jenson GSA — Phase 3 Delivery Plan</div>
+          <button class="add-col-btn" onclick="openAddColumnModal('jenson')"><i class="ti ti-column-insert-right"></i> Add Column</button>
+          <a href="https://linear.app/velou/project/jenson-gsa-1e4fa9a7c0aa/overview" target="_blank" class="btn btn-sm"><i class="ti ti-external-link"></i> Linear</a>
+        </div>
+        <div class="card" style="padding:0;margin-bottom:16px">
+          <div class="table-wrap">
+            <table id="jenson-table">
+              <thead id="jenson-thead"></thead>
+              <tbody id="jenson-tbody"></tbody>
+            </table>
           </div>
-          <table>
-            <thead><tr><th>Set</th><th>Categories</th><th>ETA</th><th>Status</th></tr></thead>
-            <tbody>
-              <tr><td><b>Set 1</b></td><td>Drivetrains</td><td>May 19 → Handover Jun 8</td><td><span class="badge badge-green">Delivered</span></td></tr>
-              <tr><td><b>Set 2</b></td><td>Bike-tires, Tubes-and-tubeless, Wheels-and-parts</td><td>Jun 16</td><td><span class="badge badge-amber">In Progress</span></td></tr>
-              <tr><td><b>Set 3</b></td><td>Cables-and-housing, Forks-and-suspensions, Grips-and-tapes</td><td>Jun 23</td><td><span class="badge badge-gray">Upcoming</span></td></tr>
-              <tr><td><b>Set 4</b></td><td>Handlebars, Seatposts, Towels</td><td>Jun 30</td><td><span class="badge badge-gray">Upcoming</span></td></tr>
-              <tr><td><b>Set 5</b></td><td>Bikes, Portable-power, Satellite-messengers + more</td><td>Jul 13</td><td><span class="badge badge-gray">Upcoming</span></td></tr>
-              <tr><td><b>Set 6</b></td><td>Sleeping-gear, Tents, Camp-furniture, Camp-lighting</td><td>Jul 21</td><td><span class="badge badge-gray">Upcoming</span></td></tr>
-              <tr><td><b>Set 7</b></td><td>Energy-food, Camp-tools, Binoculars, Trekking-poles</td><td>Jul 31</td><td><span class="badge badge-gray">Upcoming</span></td></tr>
-              <tr><td><b>Set 8</b></td><td>Camp-stoves, Coolers, Camp-cookware + more</td><td>Aug 14</td><td><span class="badge badge-red">Taxonomy Blocked</span></td></tr>
-            </tbody>
-          </table>
+          <div style="padding:12px 16px;border-top:1px solid var(--border)">
+            <button class="btn btn-sm" onclick="openAddDeliveryModal()"><i class="ti ti-plus"></i> Add Set / Row</button>
+          </div>
         </div>
-        <div style="margin-top:16px" class="card">
-          <div class="section-title" style="margin-bottom:14px">Other Key Dates</div>
-          <div class="delivery-item"><div class="delivery-date">Jun<br>18</div><div class="delivery-dot" style="background:var(--amber)"></div><div class="delivery-body"><div class="delivery-title">MudPie data delivery via Velou API</div><div class="delivery-sub">Re-evaluate once products received in production</div></div></div>
-          <div class="delivery-item"><div class="delivery-date">Jul<br>15</div><div class="delivery-dot" style="background:var(--teal)"></div><div class="delivery-body"><div class="delivery-title">Schema Markup — Enriched schema for MudPie</div><div class="delivery-sub">PLA-1039 · additionalProperties support</div></div></div>
-          <div class="delivery-item"><div class="delivery-date">Jul<br>31</div><div class="delivery-dot" style="background:var(--red)"></div><div class="delivery-body"><div class="delivery-title">Jenson — Pending taxonomy deadline (BLOCKER)</div><div class="delivery-sub">Camp-cookware, Camp-tableware, Camp-coffee-and-tea + 3 more must be finalized</div></div></div>
+
+        <div class="section-toolbar" style="margin-top:8px">
+          <div class="section-title" style="flex:1">Other Key Dates</div>
+          <button class="add-col-btn" onclick="openAddColumnModal('keydates')"><i class="ti ti-column-insert-right"></i> Add Column</button>
+          <button class="btn btn-sm" onclick="openAddKeyDateModal()"><i class="ti ti-plus"></i> Add Date</button>
         </div>
-      </div>
-
-      <!-- RISKS PAGE -->
-      <div class="page" id="page-risks">
-        <div style="display:flex;flex-direction:column;gap:10px" id="risks-list"></div>
-      </div>
-
-      <!-- CUSTOMER CONFIG PAGE -->
-      <div class="page" id="page-customers">
         <div class="card" style="padding:0">
           <div class="table-wrap">
-            <table>
-              <thead><tr><th>Customer</th><th>Platform</th><th>Data Feed</th><th>Export Type</th><th>Content</th><th>Config Profile</th><th>Status</th></tr></thead>
-              <tbody>
-                <tr><td><div class="customer-name"><div class="cust-avatar">AK</div>Akira</div></td><td><span class="badge badge-accent">Shopify</span></td><td>One-click</td><td>GMC (CSV)</td><td>GSA, PDP</td><td>PromptLayer prompt</td><td><span class="badge badge-amber">In Progress</span></td></tr>
-                <tr><td><div class="customer-name"><div class="cust-avatar">BS</div>BlackStrap</div></td><td><span class="badge badge-accent">Shopify</span></td><td>One-click</td><td>PDP CSV</td><td>PDP</td><td>PromptLayer prompt</td><td><span class="badge badge-amber">Awaiting Approval</span></td></tr>
-                <tr><td><div class="customer-name"><div class="cust-avatar">NG</div>Negative</div></td><td><span class="badge badge-accent">Shopify</span></td><td>-</td><td>PDP CSV</td><td>PDP</td><td>No PromptLayer prompt yet</td><td><span class="badge badge-gray">No Feedback</span></td></tr>
-                <tr><td><div class="customer-name"><div class="cust-avatar">FL</div>Forloh</div></td><td><span class="badge badge-accent">Shopify</span></td><td>-</td><td>-</td><td>PDP</td><td>PromptLayer prompt</td><td><span class="badge badge-red">Inactive</span></td></tr>
-                <tr><td><div class="customer-name"><div class="cust-avatar">WS</div>Weissman</div></td><td><span class="badge badge-gray">Non-Shopify</span></td><td>Existing setup</td><td>PDP CSV</td><td>PDP</td><td>PromptLayer prompt</td><td><span class="badge badge-amber">Awaiting Feedback</span></td></tr>
-                <tr><td><div class="customer-name"><div class="cust-avatar">CY</div>Coyuchi</div></td><td><span class="badge badge-accent">Shopify</span></td><td>-</td><td>PDP CSV</td><td>FAQ + Schema</td><td>PromptLayer prompt</td><td><span class="badge badge-amber">Awaiting Feedback</span></td></tr>
-                <tr><td><div class="customer-name"><div class="cust-avatar">LO</div>L'Occitane</div></td><td><span class="badge badge-accent">Shopify</span></td><td>-</td><td>PDP CSV</td><td>PDP + Schema w/ additionalProperty</td><td>PromptLayer prompt</td><td><span class="badge badge-amber">Awaiting Feedback</span></td></tr>
-                <tr><td><div class="customer-name"><div class="cust-avatar">HT</div>Hatley</div></td><td><span class="badge badge-accent">Shopify</span></td><td>Store access</td><td>CSV</td><td>PDP (POC)</td><td>PromptLayer prompt</td><td><span class="badge badge-gray">POC — On Hold</span></td></tr>
-                <tr><td><div class="customer-name"><div class="cust-avatar">TH</div>Thuma</div></td><td><span class="badge badge-accent">Shopify</span></td><td>One-click</td><td>GSA CSV</td><td>GSA</td><td>Master configs</td><td><span class="badge badge-amber">GSA Trial — Blocked</span></td></tr>
-                <tr><td><div class="customer-name"><div class="cust-avatar">JP</div>JamPlus</div></td><td><span class="badge badge-gray">Non-Shopify</span></td><td>One-click</td><td>CSV → SFTP (weekly)</td><td>PDP</td><td>Filtered attributes</td><td><span class="badge badge-blue">Live — Regen Needed</span></td></tr>
-                <tr><td><div class="customer-name"><div class="cust-avatar">MP</div>MudPie</div></td><td><span class="badge badge-accent">Shopify</span></td><td>Velou API</td><td>JSON (PDE + PDP)</td><td>Schema only + additionalProperties</td><td>Highlights &amp; Details GSA</td><td><span class="badge badge-green">Live — Feed Migrating</span></td></tr>
-                <tr><td><div class="customer-name"><div class="cust-avatar">JS</div>Jenson</div></td><td><span class="badge badge-gray">Non-Shopify</span></td><td>CSV</td><td>GMC (manual P3 / auto P1&amp;2)</td><td>GSA, PDP</td><td>Client taxonomy</td><td><span class="badge badge-green">Live — Phase 3 Active</span></td></tr>
-              </tbody>
+            <table id="keydates-table">
+              <thead id="keydates-thead"></thead>
+              <tbody id="keydates-tbody"></tbody>
             </table>
           </div>
         </div>
       </div>
 
-    </div><!-- /content -->
-  </div><!-- /main -->
-</div><!-- /shell -->
+      <!-- RISKS PAGE -->
+      <div class="page" id="page-risks">
+        <div class="section-toolbar">
+          <div style="flex:1"></div>
+          <button class="btn btn-primary btn-sm" onclick="openAddRiskModal()"><i class="ti ti-plus"></i> Add Risk</button>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px" id="risks-list"></div>
+      </div>
 
-<!-- Add/Edit Project Modal -->
-<div class="modal-overlay" id="project-modal">
-  <div class="modal">
-    <div class="modal-header">
-      <div class="modal-title" id="modal-title">Add Project</div>
-      <button class="icon-btn" onclick="closeModal('project-modal')"><i class="ti ti-x"></i></button>
-    </div>
-    <div class="modal-body">
-      <input type="hidden" id="edit-id">
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Project Name</label>
-          <input class="form-input" id="f-name" placeholder="e.g. Akira GSA">
+      <!-- CUSTOMER CONFIG PAGE -->
+      <div class="page" id="page-customers">
+        <div class="section-toolbar">
+          <div style="flex:1"></div>
+          <button class="add-col-btn" onclick="openAddColumnModal('customers')"><i class="ti ti-column-insert-right"></i> Add Column</button>
+          <button class="btn btn-primary btn-sm" onclick="openAddCustomerModal()"><i class="ti ti-plus"></i> Add Customer</button>
         </div>
-        <div class="form-group">
-          <label class="form-label">Customer</label>
-          <input class="form-input" id="f-customer" placeholder="e.g. Akira">
+        <div class="card" style="padding:0">
+          <div class="table-wrap">
+            <table id="customers-table">
+              <thead id="customers-thead"></thead>
+              <tbody id="customers-tbody"></tbody>
+            </table>
+          </div>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Type</label>
-          <select class="form-select" id="f-type">
-            <option value="Onboarding">Onboarding</option>
-            <option value="GSA">GSA</option>
-            <option value="PDP">PDP</option>
-            <option value="Migration">Migration</option>
-            <option value="Internal">Internal</option>
-            <option value="POC">POC</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Status</label>
-          <select class="form-select" id="f-status">
-            <option value="in-progress">In Progress</option>
-            <option value="live">Live</option>
-            <option value="pending">Pending Feedback</option>
-            <option value="blocked">Blocked</option>
-            <option value="inactive">Inactive</option>
-            <option value="internal">Internal</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Customer Type</label>
-          <select class="form-select" id="f-ctype">
-            <option value="Live">Live</option>
-            <option value="Trial">Trial</option>
-            <option value="POC">POC</option>
-            <option value="Churned">Churned</option>
-            <option value="Internal">Internal</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Export / Service Type</label>
-          <input class="form-input" id="f-export" placeholder="e.g. CSV → SFTP, GMC, JSON">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Content Types</label>
-        <input class="form-input" id="f-content" placeholder="e.g. PDP, GSA, Schema, FAQ">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Key Owners / Contributors</label>
-        <input class="form-input" id="f-owners" placeholder="e.g. Bimalka, Lawrence">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Next Steps / Customer Updates</label>
-        <textarea class="form-textarea" id="f-next" placeholder="Describe next steps and recent customer updates…"></textarea>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Internal Notes</label>
-        <textarea class="form-textarea" id="f-notes" placeholder="Internal plans, config details, risks…"></textarea>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Linear Project URL</label>
-          <input class="form-input" id="f-linear" placeholder="https://linear.app/velou/project/…">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Platform</label>
-          <select class="form-select" id="f-platform">
-            <option value="Shopify">Shopify</option>
-            <option value="Non-Shopify">Non-Shopify</option>
-            <option value="N/A">N/A</option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="btn" onclick="closeModal('project-modal')">Cancel</button>
-      <button class="btn btn-primary" onclick="saveProject()"><i class="ti ti-check"></i> Save Project</button>
+
     </div>
   </div>
 </div>
 
-<!-- Toast -->
+<!-- PROJECT MODAL -->
+<div class="modal-overlay" id="project-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="project-modal-title">Add Project</div>
+      <button class="icon-btn" onclick="closeModal('project-modal')"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="proj-edit-id">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Project Name</label><input class="form-input" id="f-name" placeholder="e.g. Akira GSA"></div>
+        <div class="form-group"><label class="form-label">Customer</label><input class="form-input" id="f-customer" placeholder="e.g. Akira"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Type</label>
+          <select class="form-select" id="f-type">
+            <option>Onboarding</option><option>GSA</option><option>PDP</option><option>Migration</option><option>Internal</option><option>POC</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Status</label>
+          <select class="form-select" id="f-status">
+            <option value="in-progress">In Progress</option><option value="live">Live</option><option value="pending">Pending Feedback</option><option value="blocked">Blocked</option><option value="inactive">Inactive</option><option value="internal">Internal</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Customer Type</label>
+          <select class="form-select" id="f-ctype"><option>Live</option><option>Trial</option><option>POC</option><option>Churned</option><option>Internal</option></select>
+        </div>
+        <div class="form-group"><label class="form-label">Export / Service Type</label><input class="form-input" id="f-export" placeholder="e.g. CSV → SFTP, GMC, JSON"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Platform</label>
+          <select class="form-select" id="f-platform"><option>Shopify</option><option>Non-Shopify</option><option value="N/A">N/A</option></select>
+        </div>
+        <div class="form-group"><label class="form-label">Content Types</label><input class="form-input" id="f-content" placeholder="e.g. PDP, GSA, Schema"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Key Owners / Contributors</label><input class="form-input" id="f-owners" placeholder="e.g. Bimalka, Lawrence"></div>
+      <div class="form-group"><label class="form-label">Next Steps / Customer Updates</label><textarea class="form-textarea" id="f-next"></textarea></div>
+      <div class="form-group"><label class="form-label">Internal Notes</label><textarea class="form-textarea" id="f-notes"></textarea></div>
+      <div class="form-group"><label class="form-label">Linear Project URL</label><input class="form-input" id="f-linear" placeholder="https://linear.app/velou/project/…"></div>
+      <div id="proj-extra-fields"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('project-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveProject()"><i class="ti ti-check"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- RISK MODAL -->
+<div class="modal-overlay" id="risk-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="risk-modal-title">Add Risk</div>
+      <button class="icon-btn" onclick="closeModal('risk-modal')"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="risk-edit-id">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Severity</label>
+          <select class="form-select" id="r-sev"><option value="high">High</option><option value="medium">Medium</option></select>
+        </div>
+        <div class="form-group"><label class="form-label">Project</label><input class="form-input" id="r-project" placeholder="e.g. Akira"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Title</label><input class="form-input" id="r-title" placeholder="Short summary of the risk"></div>
+      <div class="form-group"><label class="form-label">Detail</label><textarea class="form-textarea" id="r-detail" placeholder="Full description, impact, what to watch…"></textarea></div>
+      <div class="form-group"><label class="form-label">Owner</label><input class="form-input" id="r-owner" placeholder="e.g. Shalini / Pethum"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('risk-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveRisk()"><i class="ti ti-check"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- DELIVERY MODAL (Jenson sets) -->
+<div class="modal-overlay" id="delivery-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="delivery-modal-title">Add Delivery Set</div>
+      <button class="icon-btn" onclick="closeModal('delivery-modal')"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="del-edit-id">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Set / Label</label><input class="form-input" id="d-set" placeholder="e.g. Set 9"></div>
+        <div class="form-group"><label class="form-label">ETA</label><input class="form-input" id="d-eta" placeholder="e.g. Sep 1"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Categories</label><textarea class="form-textarea" id="d-cats" placeholder="e.g. Camp-stoves, Coolers"></textarea></div>
+      <div class="form-group"><label class="form-label">Status</label>
+        <select class="form-select" id="d-status">
+          <option value="delivered">Delivered</option><option value="in-progress">In Progress</option><option value="upcoming">Upcoming</option><option value="blocked">Blocked</option>
+        </select>
+      </div>
+      <div id="del-extra-fields"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('delivery-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveDelivery()"><i class="ti ti-check"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- KEY DATE MODAL -->
+<div class="modal-overlay" id="keydate-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="kd-modal-title">Add Key Date</div>
+      <button class="icon-btn" onclick="closeModal('keydate-modal')"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="kd-edit-id">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Date</label><input class="form-input" id="kd-date" placeholder="e.g. Jul 15"></div>
+        <div class="form-group"><label class="form-label">Priority</label>
+          <select class="form-select" id="kd-priority">
+            <option value="normal">Normal</option><option value="high">High / Blocker</option><option value="teal">Key Milestone</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group"><label class="form-label">Title</label><input class="form-input" id="kd-title" placeholder="What's happening on this date?"></div>
+      <div class="form-group"><label class="form-label">Detail / Notes</label><input class="form-input" id="kd-detail" placeholder="Owner, ticket, context…"></div>
+      <div id="kd-extra-fields"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('keydate-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveKeyDate()"><i class="ti ti-check"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOMER MODAL -->
+<div class="modal-overlay" id="customer-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="cust-modal-title">Add Customer Config</div>
+      <button class="icon-btn" onclick="closeModal('customer-modal')"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="cust-edit-id">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Customer Name</label><input class="form-input" id="c-name" placeholder="e.g. Akira"></div>
+        <div class="form-group"><label class="form-label">Platform</label>
+          <select class="form-select" id="c-platform"><option>Shopify</option><option>Non-Shopify</option><option value="N/A">N/A</option></select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Data Feed</label><input class="form-input" id="c-feed" placeholder="e.g. One-click, Velou API"></div>
+        <div class="form-group"><label class="form-label">Export Type</label><input class="form-input" id="c-export" placeholder="e.g. CSV → SFTP, JSON"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Content</label><input class="form-input" id="c-content" placeholder="e.g. GSA, PDP, Schema"></div>
+      <div class="form-group"><label class="form-label">Config Profile</label><input class="form-input" id="c-config" placeholder="e.g. PromptLayer prompt, Filtered attributes"></div>
+      <div class="form-group"><label class="form-label">Status</label>
+        <select class="form-select" id="c-status">
+          <option value="in-progress">In Progress</option><option value="live">Live</option><option value="pending">Awaiting Feedback</option><option value="blocked">Blocked</option><option value="inactive">Inactive</option><option value="poc">POC — On Hold</option>
+        </select>
+      </div>
+      <div id="cust-extra-fields"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('customer-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveCustomer()"><i class="ti ti-check"></i> Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD COLUMN MODAL -->
+<div class="modal-overlay" id="col-modal">
+  <div class="modal" style="width:400px">
+    <div class="modal-header">
+      <div class="modal-title">Add Column</div>
+      <button class="icon-btn" onclick="closeModal('col-modal')"><i class="ti ti-x"></i></button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="col-target">
+      <div class="form-group"><label class="form-label">Column Name</label><input class="form-input" id="col-name" placeholder="e.g. Priority, Region, Due Date"></div>
+      <div class="form-group"><label class="form-label">Column Type</label>
+        <select class="form-select" id="col-type">
+          <option value="text">Text</option>
+          <option value="select">Dropdown (Status)</option>
+          <option value="badge">Badge / Tag</option>
+        </select>
+      </div>
+      <div id="col-options-wrap" style="display:none">
+        <div class="form-group"><label class="form-label">Dropdown options (comma-separated)</label><input class="form-input" id="col-options" placeholder="e.g. High, Medium, Low"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn" onclick="closeModal('col-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="saveColumn()"><i class="ti ti-check"></i> Add Column</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"><i class="ti ti-circle-check"></i><span id="toast-msg">Saved!</span></div>
 
 <script>
-const COLORS = ['#6c63ff','#14b8a6','#f59e0b','#3b82f6','#ec4899','#22c55e','#ef4444','#8b84ff'];
+const COLORS=['#6c63ff','#14b8a6','#f59e0b','#3b82f6','#ec4899','#22c55e','#ef4444','#8b84ff'];
+function initials(n){return n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();}
+function colorFor(n){let h=0;for(let c of n)h+=c.charCodeAt(0);return COLORS[h%COLORS.length];}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+function openModal(id){document.getElementById(id).classList.add('open');}
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toast-msg').textContent=msg;
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500);
+}
 
-let projects = [
-  {id:1, name:'Akira GSA + PDP', customer:'Akira', type:'Onboarding', status:'in-progress', ctype:'Trial', export:'GMC (CSV)', content:'GSA, PDP', owners:'Pethum, Shalini, Lawrence, Shepherd', next:'Complete product enrollment; generate updated GSA CSV; fix content config to use Akira PromptLayer prompt before go-live.', notes:'Config currently uses DB prompt instead of Akira PromptLayer prompt — LoveShackFancy refs in content. Must fix before go-live.', linear:'https://linear.app/velou/project/akira-gsa-97715255f8bf/overview', platform:'Shopify'},
-  {id:2, name:'BlackStrap PDP', customer:'BlackStrap', type:'PDP', status:'pending', ctype:'Trial', export:'PDP CSV', content:'PDP', owners:'Shalini, Lawrence', next:'Customer approval on Sample V3 outstanding. Platform migration planned after NBF and MudPie. ONB-378 attribution fixes required before PDP launch.', notes:'Sample V3 approved. Migration after NBF + MudPie.', linear:'', platform:'Shopify'},
-  {id:3, name:'Negative PDP', customer:'Negative', type:'PDP', status:'pending', ctype:'Trial', export:'PDP CSV', content:'PDP', owners:'', next:'No feedback since Sample V2 (Feb). Migration scheduled after BlackStrap. Needs PromptLayer prompt before any future samples.', notes:'Sample V2 not on PromptLayer. Needs dedicated prompt setup.', linear:'', platform:'Shopify'},
-  {id:4, name:'Forloh PDP', customer:'Forloh', type:'PDP', status:'inactive', ctype:'Churned', export:'-', content:'PDP', owners:'Visal, Lawrence', next:'Customer not renewing. No work planned unless re-engagement. Review all feedback in sample sheet if work resumes.', notes:'Not renewing. Exclude from migration track.', linear:'', platform:'Shopify'},
-  {id:5, name:'Weissman PDP', customer:'Weissman', type:'PDP', status:'pending', ctype:'Trial', export:'PDP CSV', content:'PDP', owners:'Bimalka, Pethum, Lawrence', next:'Awaiting feedback on Sample V2. ONB-409 attribute updates required before go-live. Complete feed updates then migrate.', notes:'Non-Shopify — can go live on current store, migrate later.', linear:'', platform:'Non-Shopify'},
-  {id:6, name:'Coyuchi FAQ + Schema', customer:'Coyuchi', type:'PDP', status:'pending', ctype:'Trial', export:'PDP CSV', content:'FAQ, Schema', owners:'', next:'Waiting for customer feedback. Confirm if newer schema implementation (with additionalProperty) should be used.', notes:'Sample uses older schema approach without additionalProperty.', linear:'', platform:'Shopify'},
-  {id:7, name:"L'Occitane PDP + Schema", customer:"L'Occitane", type:'PDP', status:'pending', ctype:'Trial', export:'PDP CSV', content:'PDP, Schema + additionalProperty', owners:'', next:'No further feedback or next steps communicated.', notes:'Schema updated to include additionalProperty.', linear:'', platform:'Shopify'},
-  {id:8, name:'Hatley PDP POC', customer:'Hatley', type:'POC', status:'blocked', ctype:'POC', export:'CSV', content:'PDP', owners:'Shepherd, Lawrence, Lakshan', next:'ONB-323 (size variant) and ONB-324 (manual attribute changes) must be resolved if customer re-engages.', notes:'Manual content updates done in Catalog Studio. Needs eng fixes before go-live.', linear:'', platform:'Shopify'},
-  {id:9, name:'Thuma GSA', customer:'Thuma', type:'GSA', status:'blocked', ctype:'Trial', export:'GSA CSV', content:'GSA', owners:'Bimalka', next:'Resolve PLA-1110 (products without images not enriched) before updating master taxonomy and proceeding with go-live.', notes:'Using master configs. Image enrichment blocked by PLA-1110.', linear:'', platform:'Shopify'},
-  {id:10, name:'JamPlus PDP Migration', customer:'JamPlus', type:'Migration', status:'live', ctype:'Live', export:'CSV → SFTP (weekly)', content:'PDP', owners:'Bimalka', next:'Regenerate sample set from ONB-467 feedback; share for customer review; then full regen excluding sample IDs (ONB-484).', notes:'Non-Shopify. One-click migrated. Filtered attributes profile.', linear:'https://linear.app/velou/project/jamplus-c0b0a874b1f7/overview', platform:'Non-Shopify'},
-  {id:11, name:'MudPie Migration', customer:'MudPie', type:'Migration', status:'live', ctype:'Live', export:'JSON (PDE + PDP)', content:'Schema + additionalProperties, GSA Highlights & Details', owners:'Bimalka, Malsha, Dinuka', next:'Customer sends data to production after Jun 11. Evaluate enrichment output. Delivery Jun 18. Finalize PDE delivery method (Dinuka).', notes:'Data via Velou API. PDE delivery method (SFTP) not yet supported — needs decision.', linear:'https://linear.app/velou/project/mudpie-2de6007fc63c/overview', platform:'Shopify'},
-  {id:12, name:'Jenson GSA Phase 3', customer:'Jenson', type:'GSA', status:'in-progress', ctype:'Live', export:'GMC (manual P3 / auto P1&2)', content:'GSA, PDP', owners:'Eshan, Tashini, Raveen', next:'Set 2 due Jun 16. Finalize 6 pending taxonomies by Jul 31. Evaluate Precision Analysis Tool from Set 2. No GMC automation for P3 without customer approval.', notes:'8 sets total. Taxonomy blockers for Set 8 categories. Using Option 5 timeline baseline.', linear:'https://linear.app/velou/project/jenson-gsa-1e4fa9a7c0aa/overview', platform:'Non-Shopify'},
-  {id:13, name:'Master Taxonomy', customer:'Internal', type:'Internal', status:'internal', ctype:'Internal', export:'-', content:'-', owners:'Shalini, Adams, Shepherd', next:'Finalize certification checklist (incorporate Sadee feedback). Allocate resources. Re-certify 51 categories. Proceed with expansion.', notes:'51 categories have gaps. Checklist not finalized. No dedicated resourcing. Stalled.', linear:'https://linear.app/velou/project/master-taxonomy-4f428f21e2d5/overview', platform:'N/A'},
-  {id:14, name:'Taxonomy Extractor V2', customer:'Internal', type:'Internal', status:'internal', ctype:'Internal', export:'-', content:'-', owners:'', next:'Actively log bugs and inconsistencies in Linear project. Review tickets regularly to prioritize fixes.', notes:'Accelerates taxonomy creation. Track all bugs, edge cases in Linear project.', linear:'https://linear.app/velou/project/taxonomy-extractor-v2-c49a36ef25f3/overview', platform:'N/A'},
-  {id:15, name:'Schema Markup Enhancement', customer:'Internal', type:'Internal', status:'internal', ctype:'Internal', export:'-', content:'Schema, additionalProperties', owners:'', next:'PLA-1039 in progress. Manual schema for MudPie due Jul 15. Productize schema generation.', notes:'Enhanced schema exists in Demo Delta — not productized. Manual workaround for now.', linear:'', platform:'N/A'},
-];
+// ── Custom columns registry ──────────────────────────────────────
+const extraCols = {projects:[], jenson:[], keydates:[], customers:[]};
 
-let risks = [
-  {id:1, sev:'high', title:'Akira content config uses wrong prompt', detail:'Content generation uses DB prompt instead of Akira PromptLayer prompt → LoveShackFancy brand refs appear in output. Must fix before go-live.', project:'Akira', owner:'Shalini / Pethum'},
-  {id:2, sev:'high', title:'Jenson — 6 taxonomy categories not finalized (Jul 31 blocker)', detail:'Camp-cookware, Camp-food-storage, Camp-coffee-and-tea, Camp-utensils, Camp-tableware, Camp-water-storage. Blocks Set 8 enrichment.', project:'Jenson', owner:'Eshan / Tashini'},
-  {id:3, sev:'high', title:'Thuma image enrichment blocked — PLA-1110', detail:'Products without images are not enriched. Blocks master taxonomy update and GSA go-live.', project:'Thuma', owner:'Bimalka'},
-  {id:4, sev:'medium', title:'Master Taxonomy stalled — no resource allocated', detail:'Certification checklist not finalized. 51 categories need re-validation. Expansion stalled. Risk of repeated rework.', project:'Master Taxonomy', owner:'Shalini / Adams'},
-  {id:5, sev:'medium', title:'MudPie PDE delivery method not finalized', detail:'SFTP not currently a supported PDE delivery mechanism. Dinuka to drive decision before migration complete.', project:'MudPie', owner:'Dinuka'},
-  {id:6, sev:'medium', title:'PDP CSV export not Excel-compatible — ONB-321', detail:'CSV from exporter opens incorrectly in Excel. Re-exporting from Google Sheets produces same issue. Validate fix in Excel directly.', project:'General / Exporter', owner:'Engineering'},
-  {id:7, sev:'medium', title:'BlackStrap — ONB-378 attribution fixes pending before PDP launch', detail:'Manual attribute updates used in samples must be implemented in platform before BlackStrap goes live with PDP.', project:'BlackStrap', owner:'Shalini'},
-];
-
-const statusConfig = {
-  'live': {label:'Live', cls:'badge-green'},
-  'in-progress': {label:'In Progress', cls:'badge-amber'},
-  'pending': {label:'Pending Feedback', cls:'badge-blue'},
-  'blocked': {label:'Blocked', cls:'badge-red'},
-  'inactive': {label:'Inactive', cls:'badge-gray'},
-  'internal': {label:'Internal', cls:'badge-accent'},
+// ── Data ─────────────────────────────────────────────────────────
+const statusConfig={
+  'live':{label:'Live',cls:'badge-green'},
+  'in-progress':{label:'In Progress',cls:'badge-amber'},
+  'pending':{label:'Pending Feedback',cls:'badge-blue'},
+  'blocked':{label:'Blocked',cls:'badge-red'},
+  'inactive':{label:'Inactive',cls:'badge-gray'},
+  'internal':{label:'Internal',cls:'badge-accent'},
+  'poc':{label:'POC — On Hold',cls:'badge-gray'},
+  'delivered':{label:'Delivered',cls:'badge-green'},
+  'upcoming':{label:'Upcoming',cls:'badge-gray'},
 };
 
-function initials(name) { return name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase(); }
-function colorFor(name) { let h=0; for(let c of name) h+=c.charCodeAt(0); return COLORS[h%COLORS.length]; }
+let projects=[
+  {id:1,name:'Akira GSA + PDP',customer:'Akira',type:'Onboarding',status:'in-progress',ctype:'Trial',export:'GMC (CSV)',content:'GSA, PDP',owners:'Pethum, Shalini, Lawrence, Shepherd',next:'Complete product enrollment; generate updated GSA CSV; fix content config to use Akira PromptLayer prompt before go-live.',notes:'Config currently uses DB prompt instead of Akira PromptLayer prompt — LoveShackFancy refs in content. Must fix before go-live.',linear:'https://linear.app/velou/project/akira-gsa-97715255f8bf/overview',platform:'Shopify'},
+  {id:2,name:'BlackStrap PDP',customer:'BlackStrap',type:'PDP',status:'pending',ctype:'Trial',export:'PDP CSV',content:'PDP',owners:'Shalini, Lawrence',next:'Customer approval on Sample V3 outstanding. ONB-378 attribution fixes required before PDP launch.',notes:'Sample V3 approved. Migration after NBF + MudPie.',linear:'',platform:'Shopify'},
+  {id:3,name:'Negative PDP',customer:'Negative',type:'PDP',status:'pending',ctype:'Trial',export:'PDP CSV',content:'PDP',owners:'',next:'No feedback since Sample V2 (Feb). Needs PromptLayer prompt before future samples.',notes:'Sample V2 not on PromptLayer.',linear:'',platform:'Shopify'},
+  {id:4,name:'Forloh PDP',customer:'Forloh',type:'PDP',status:'inactive',ctype:'Churned',export:'-',content:'PDP',owners:'Visal, Lawrence',next:'Customer not renewing. No work planned unless re-engagement.',notes:'Not renewing. Exclude from migration track.',linear:'',platform:'Shopify'},
+  {id:5,name:'Weissman PDP',customer:'Weissman',type:'PDP',status:'pending',ctype:'Trial',export:'PDP CSV',content:'PDP',owners:'Bimalka, Pethum, Lawrence',next:'Awaiting feedback on Sample V2. ONB-409 attribute updates required before go-live.',notes:'Non-Shopify — can go live on current store, migrate later.',linear:'',platform:'Non-Shopify'},
+  {id:6,name:'Coyuchi FAQ + Schema',customer:'Coyuchi',type:'PDP',status:'pending',ctype:'Trial',export:'PDP CSV',content:'FAQ, Schema',owners:'',next:'Waiting for customer feedback. Confirm if newer schema (additionalProperty) should be used.',notes:'Sample uses older schema approach without additionalProperty.',linear:'',platform:'Shopify'},
+  {id:7,name:"L'Occitane PDP + Schema",customer:"L'Occitane",type:'PDP',status:'pending',ctype:'Trial',export:'PDP CSV',content:'PDP, Schema + additionalProperty',owners:'',next:'No further feedback or next steps communicated.',notes:'Schema updated to include additionalProperty.',linear:'',platform:'Shopify'},
+  {id:8,name:'Hatley PDP POC',customer:'Hatley',type:'POC',status:'blocked',ctype:'POC',export:'CSV',content:'PDP',owners:'Shepherd, Lawrence, Lakshan',next:'ONB-323 (size variant) and ONB-324 must be resolved if customer re-engages.',notes:'Manual content updates done in Catalog Studio.',linear:'',platform:'Shopify'},
+  {id:9,name:'Thuma GSA',customer:'Thuma',type:'GSA',status:'blocked',ctype:'Trial',export:'GSA CSV',content:'GSA',owners:'Bimalka',next:'Resolve PLA-1110 before updating master taxonomy and proceeding with go-live.',notes:'Using master configs. Image enrichment blocked by PLA-1110.',linear:'',platform:'Shopify'},
+  {id:10,name:'JamPlus PDP Migration',customer:'JamPlus',type:'Migration',status:'live',ctype:'Live',export:'CSV → SFTP (weekly)',content:'PDP',owners:'Bimalka',next:'Regenerate sample set from ONB-467 feedback; share for review; then full regen (ONB-484).',notes:'Non-Shopify. One-click migrated. Filtered attributes profile.',linear:'https://linear.app/velou/project/jamplus-c0b0a874b1f7/overview',platform:'Non-Shopify'},
+  {id:11,name:'MudPie Migration',customer:'MudPie',type:'Migration',status:'live',ctype:'Live',export:'JSON (PDE + PDP)',content:'Schema + additionalProperties, GSA Highlights & Details',owners:'Bimalka, Malsha, Dinuka',next:'Evaluate enrichment output. Delivery Jun 18. Finalize PDE delivery method (Dinuka).',notes:'Data via Velou API. PDE delivery method (SFTP) not yet supported.',linear:'https://linear.app/velou/project/mudpie-2de6007fc63c/overview',platform:'Shopify'},
+  {id:12,name:'Jenson GSA Phase 3',customer:'Jenson',type:'GSA',status:'in-progress',ctype:'Live',export:'GMC (manual P3 / auto P1&2)',content:'GSA, PDP',owners:'Eshan, Tashini, Raveen',next:'Set 2 due Jun 16. Finalize 6 pending taxonomies by Jul 31. No GMC automation for P3 without customer approval.',notes:'8 sets total. Taxonomy blockers for Set 8 categories.',linear:'https://linear.app/velou/project/jenson-gsa-1e4fa9a7c0aa/overview',platform:'Non-Shopify'},
+  {id:13,name:'Master Taxonomy',customer:'Internal',type:'Internal',status:'internal',ctype:'Internal',export:'-',content:'-',owners:'Shalini, Adams, Shepherd',next:'Finalize certification checklist. Allocate resources. Re-certify 51 categories.',notes:'51 categories have gaps. Checklist not finalized. No dedicated resourcing. Stalled.',linear:'https://linear.app/velou/project/master-taxonomy-4f428f21e2d5/overview',platform:'N/A'},
+  {id:14,name:'Taxonomy Extractor V2',customer:'Internal',type:'Internal',status:'internal',ctype:'Internal',export:'-',content:'-',owners:'',next:'Actively log bugs and inconsistencies in Linear project.',notes:'Accelerates taxonomy creation. Track all bugs, edge cases in Linear project.',linear:'https://linear.app/velou/project/taxonomy-extractor-v2-c49a36ef25f3/overview',platform:'N/A'},
+  {id:15,name:'Schema Markup Enhancement',customer:'Internal',type:'Internal',status:'internal',ctype:'Internal',export:'-',content:'Schema, additionalProperties',owners:'',next:'PLA-1039 in progress. Manual schema for MudPie due Jul 15.',notes:'Enhanced schema exists in Demo Delta — not productized.',linear:'',platform:'N/A'},
+];
 
-function renderProjects(filter='all') {
-  const tbody = document.getElementById('projects-tbody');
-  let list = projects;
-  if(filter !== 'all') list = projects.filter(p => p.status === filter || (filter==='internal' && p.ctype==='Internal'));
-  if(!list.length){ tbody.innerHTML='<tr><td colspan="8"><div class="empty"><i class="ti ti-folder-off"></i>No projects match this filter</div></td></tr>'; return; }
-  tbody.innerHTML = list.map(p => {
-    const sc = statusConfig[p.status] || {label:p.status, cls:'badge-gray'};
-    const av = initials(p.customer);
-    const col = colorFor(p.customer);
-    const linBtn = p.linear ? `<a href="${p.linear}" target="_blank" class="icon-btn" title="Open in Linear"><i class="ti ti-external-link"></i></a>` : '';
+let risks=[
+  {id:1,sev:'high',title:'Akira content config uses wrong prompt',detail:'Content generation uses DB prompt instead of Akira PromptLayer prompt → LoveShackFancy brand refs appear in output. Must fix before go-live.',project:'Akira',owner:'Shalini / Pethum'},
+  {id:2,sev:'high',title:'Jenson — 6 taxonomy categories not finalized (Jul 31 blocker)',detail:'Camp-cookware, Camp-food-storage, Camp-coffee-and-tea, Camp-utensils, Camp-tableware, Camp-water-storage. Blocks Set 8 enrichment.',project:'Jenson',owner:'Eshan / Tashini'},
+  {id:3,sev:'high',title:'Thuma image enrichment blocked — PLA-1110',detail:'Products without images are not enriched. Blocks master taxonomy update and GSA go-live.',project:'Thuma',owner:'Bimalka'},
+  {id:4,sev:'medium',title:'Master Taxonomy stalled — no resource allocated',detail:'Certification checklist not finalized. 51 categories need re-validation. Expansion stalled.',project:'Master Taxonomy',owner:'Shalini / Adams'},
+  {id:5,sev:'medium',title:'MudPie PDE delivery method not finalized',detail:'SFTP not currently a supported PDE delivery mechanism. Dinuka to drive decision before migration complete.',project:'MudPie',owner:'Dinuka'},
+  {id:6,sev:'medium',title:'PDP CSV export not Excel-compatible — ONB-321',detail:'CSV from exporter opens incorrectly in Excel. Validate fix in Excel directly after any changes.',project:'General / Exporter',owner:'Engineering'},
+  {id:7,sev:'medium',title:'BlackStrap — ONB-378 attribution fixes pending before PDP launch',detail:'Manual attribute updates used in samples must be implemented in platform before BlackStrap goes live with PDP.',project:'BlackStrap',owner:'Shalini'},
+];
+
+let jensonSets=[
+  {id:1,set:'Set 1',categories:'Drivetrains',eta:'May 19 → Handover Jun 8',status:'delivered'},
+  {id:2,set:'Set 2',categories:'Bike-tires, Tubes-and-tubeless, Wheels-and-parts',eta:'Jun 16',status:'in-progress'},
+  {id:3,set:'Set 3',categories:'Cables-and-housing, Forks-and-suspensions, Grips-and-tapes',eta:'Jun 23',status:'upcoming'},
+  {id:4,set:'Set 4',categories:'Handlebars, Seatposts, Towels',eta:'Jun 30',status:'upcoming'},
+  {id:5,set:'Set 5',categories:'Bikes, Portable-power, Satellite-messengers + more',eta:'Jul 13',status:'upcoming'},
+  {id:6,set:'Set 6',categories:'Sleeping-gear, Tents, Camp-furniture, Camp-lighting',eta:'Jul 21',status:'upcoming'},
+  {id:7,set:'Set 7',categories:'Energy-food, Camp-tools, Binoculars, Trekking-poles',eta:'Jul 31',status:'upcoming'},
+  {id:8,set:'Set 8',categories:'Camp-stoves, Coolers, Camp-cookware + more',eta:'Aug 14',status:'blocked'},
+];
+
+let keyDates=[
+  {id:1,date:'Jun 18',title:'MudPie data delivery via Velou API',detail:'Re-evaluate once products received in production',priority:'normal'},
+  {id:2,date:'Jul 15',title:'Schema Markup — Enriched schema for MudPie',detail:'PLA-1039 · additionalProperties support',priority:'teal'},
+  {id:3,date:'Jul 31',title:'Jenson — Pending taxonomy deadline (BLOCKER)',detail:'Camp-cookware, Camp-tableware, Camp-coffee-and-tea + 3 more must be finalized',priority:'high'},
+];
+
+let customers=[
+  {id:1,name:'Akira',platform:'Shopify',feed:'One-click',export:'GMC (CSV)',content:'GSA, PDP',config:'PromptLayer prompt',status:'in-progress'},
+  {id:2,name:'BlackStrap',platform:'Shopify',feed:'One-click',export:'PDP CSV',content:'PDP',config:'PromptLayer prompt',status:'pending'},
+  {id:3,name:'Negative',platform:'Shopify',feed:'-',export:'PDP CSV',content:'PDP',config:'No PromptLayer prompt yet',status:'pending'},
+  {id:4,name:'Forloh',platform:'Shopify',feed:'-',export:'-',content:'PDP',config:'PromptLayer prompt',status:'inactive'},
+  {id:5,name:'Weissman',platform:'Non-Shopify',feed:'Existing setup',export:'PDP CSV',content:'PDP',config:'PromptLayer prompt',status:'pending'},
+  {id:6,name:'Coyuchi',platform:'Shopify',feed:'-',export:'PDP CSV',content:'FAQ + Schema',config:'PromptLayer prompt',status:'pending'},
+  {id:7,name:"L'Occitane",platform:'Shopify',feed:'-',export:'PDP CSV',content:'PDP + Schema w/ additionalProperty',config:'PromptLayer prompt',status:'pending'},
+  {id:8,name:'Hatley',platform:'Shopify',feed:'Store access',export:'CSV',content:'PDP (POC)',config:'PromptLayer prompt',status:'poc'},
+  {id:9,name:'Thuma',platform:'Shopify',feed:'One-click',export:'GSA CSV',content:'GSA',config:'Master configs',status:'blocked'},
+  {id:10,name:'JamPlus',platform:'Non-Shopify',feed:'One-click',export:'CSV → SFTP (weekly)',content:'PDP',config:'Filtered attributes',status:'live'},
+  {id:11,name:'MudPie',platform:'Shopify',feed:'Velou API',export:'JSON (PDE + PDP)',content:'Schema only + additionalProperties',config:'Highlights & Details GSA',status:'live'},
+  {id:12,name:'Jenson',platform:'Non-Shopify',feed:'CSV',export:'GMC (manual P3 / auto P1&2)',content:'GSA, PDP',config:'Client taxonomy',status:'live'},
+];
+
+// ── Inline edit helper ───────────────────────────────────────────
+function makeEditable(td, value, onSave) {
+  td.innerHTML='';
+  const inp=document.createElement('input');
+  inp.className='inline-edit';inp.value=value;
+  td.appendChild(inp);inp.focus();inp.select();
+  function commit(){const v=inp.value.trim();td.innerHTML='';onSave(v);renderCell(td,v);}
+  inp.addEventListener('blur',commit);
+  inp.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();commit();}if(e.key==='Escape'){td.innerHTML='';renderCell(td,value);}});
+}
+function renderCell(td,val){td.textContent=val||'—';}
+
+// ── PROJECTS ────────────────────────────────────────────────────
+let projFilter='all';
+
+function renderProjects(filter){
+  if(filter!==undefined)projFilter=filter;
+  let list=projects;
+  if(projFilter==='internal')list=projects.filter(p=>p.ctype==='Internal');
+  else if(projFilter!=='all')list=projects.filter(p=>p.status===projFilter);
+
+  // thead
+  const thead=document.getElementById('projects-thead');
+  const cols=['Project / Customer','Type','Status','Export Type','Content Types','Key Owners','Next Step',...extraCols.projects.map(c=>c.name),''];
+  thead.innerHTML='<tr>'+cols.map((c,i)=>`<th${i===cols.length-1?' class="th-action"':''}>${c}</th>`).join('')+'</tr>';
+
+  const tbody=document.getElementById('projects-tbody');
+  if(!list.length){tbody.innerHTML=`<tr><td colspan="${cols.length}"><div class="empty"><i class="ti ti-folder-off"></i>No projects match</div></td></tr>`;return;}
+
+  tbody.innerHTML=list.map(p=>{
+    const sc=statusConfig[p.status]||{label:p.status,cls:'badge-gray'};
+    const av=initials(p.customer);const col=colorFor(p.customer);
+    const linBtn=p.linear?`<a href="${p.linear}" target="_blank" class="icon-btn" title="Open in Linear"><i class="ti ti-external-link"></i></a>`:'';
+    const extraTds=extraCols.projects.map(c=>`<td class="editable-cell" data-pid="${p.id}" data-col="${c.name}">${p['_'+c.name]||''}</td>`).join('');
     return `<tr>
       <td><div class="customer-name"><div class="cust-avatar" style="background:${col}20;color:${col}">${av}</div><div><div style="font-weight:500">${p.name}</div><div style="font-size:11px;color:var(--text-muted)">${p.customer}</div></div></div></td>
       <td><span class="badge badge-gray">${p.type}</span></td>
       <td><span class="badge ${sc.cls}">${sc.label}</span></td>
-      <td style="color:var(--text-muted);font-size:12px">${p.export||'-'}</td>
+      <td class="editable-cell" data-pid="${p.id}" data-col="export" style="color:var(--text-muted);font-size:12px">${p.export||'-'}</td>
       <td><div class="config-pills">${(p.content||'-').split(',').map(c=>`<span class="pill">${c.trim()}</span>`).join('')}</div></td>
-      <td style="font-size:12px;color:var(--text-muted);max-width:140px">${p.owners||'—'}</td>
-      <td style="font-size:12px;color:var(--text-muted);max-width:200px">${(p.next||'').slice(0,90)}${(p.next||'').length>90?'…':''}</td>
-      <td><div class="action-btns">${linBtn}<button class="icon-btn" onclick="editProject(${p.id})" title="Edit"><i class="ti ti-edit"></i></button><button class="icon-btn danger" onclick="deleteProject(${p.id})" title="Delete"><i class="ti ti-trash"></i></button></div></td>
+      <td class="editable-cell" data-pid="${p.id}" data-col="owners" style="font-size:12px;color:var(--text-muted)">${p.owners||'—'}</td>
+      <td class="editable-cell" data-pid="${p.id}" data-col="next" style="font-size:12px;color:var(--text-muted);max-width:200px">${(p.next||'').slice(0,80)}${(p.next||'').length>80?'…':''}</td>
+      ${extraTds}
+      <td><div class="action-btns">${linBtn}<button class="act-btn act-btn-edit" onclick="openEditProjectModal(${p.id})"><i class="ti ti-edit"></i> Edit</button><button class="act-btn act-btn-delete" onclick="deleteProject(${p.id})"><i class="ti ti-trash"></i> Delete</button></div></td>
     </tr>`;
   }).join('');
-  document.getElementById('proj-count').textContent = projects.length;
+
+  // attach inline edit listeners
+  tbody.querySelectorAll('.editable-cell').forEach(td=>{
+    td.addEventListener('dblclick',()=>{
+      const pid=+td.dataset.pid;const col=td.dataset.col;
+      const p=projects.find(x=>x.id===pid);if(!p)return;
+      const key=col.startsWith('_')?col:'_'+col==='_export'?'export':col==='owners'?'owners':col==='next'?'next':'_'+col;
+      const realKey=['export','owners','next'].includes(col)?col:'_'+col;
+      const curVal=p[realKey]||'';
+      makeEditable(td,curVal,(v)=>{
+        p[realKey]=v;
+        renderProjects();
+        showToast('Updated');
+      });
+    });
+  });
+
+  document.getElementById('proj-count').textContent=projects.length;
+  document.getElementById('stat-total').textContent=projects.length;
 }
 
-function renderDashboardProjects() {
-  const el = document.getElementById('dashboard-projects-list');
-  el.innerHTML = projects.filter(p=>p.ctype!=='Internal').slice(0,8).map(p=>{
-    const sc = statusConfig[p.status] || {label:p.status, cls:'badge-gray'};
-    const col = colorFor(p.customer);
+function filterProjects(f,el){
+  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  renderProjects(f);
+}
+
+function openAddProjectModal(){
+  document.getElementById('project-modal-title').textContent='Add Project';
+  document.getElementById('proj-edit-id').value='';
+  ['f-name','f-customer','f-export','f-content','f-owners','f-next','f-notes','f-linear'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-type').value='Onboarding';
+  document.getElementById('f-status').value='in-progress';
+  document.getElementById('f-ctype').value='Trial';
+  document.getElementById('f-platform').value='Shopify';
+  renderExtraFields('proj-extra-fields','projects',null);
+  openModal('project-modal');
+}
+
+function openEditProjectModal(id){
+  const p=projects.find(x=>x.id===id);if(!p)return;
+  document.getElementById('project-modal-title').textContent='Edit Project';
+  document.getElementById('proj-edit-id').value=id;
+  document.getElementById('f-name').value=p.name;
+  document.getElementById('f-customer').value=p.customer;
+  document.getElementById('f-type').value=p.type;
+  document.getElementById('f-status').value=p.status;
+  document.getElementById('f-ctype').value=p.ctype;
+  document.getElementById('f-export').value=p.export;
+  document.getElementById('f-content').value=p.content;
+  document.getElementById('f-owners').value=p.owners;
+  document.getElementById('f-next').value=p.next;
+  document.getElementById('f-notes').value=p.notes;
+  document.getElementById('f-linear').value=p.linear;
+  document.getElementById('f-platform').value=p.platform;
+  renderExtraFields('proj-extra-fields','projects',p);
+  openModal('project-modal');
+}
+
+function saveProject(){
+  const id=document.getElementById('proj-edit-id').value;
+  const data={
+    name:document.getElementById('f-name').value.trim(),
+    customer:document.getElementById('f-customer').value.trim(),
+    type:document.getElementById('f-type').value,
+    status:document.getElementById('f-status').value,
+    ctype:document.getElementById('f-ctype').value,
+    export:document.getElementById('f-export').value.trim(),
+    content:document.getElementById('f-content').value.trim(),
+    owners:document.getElementById('f-owners').value.trim(),
+    next:document.getElementById('f-next').value.trim(),
+    notes:document.getElementById('f-notes').value.trim(),
+    linear:document.getElementById('f-linear').value.trim(),
+    platform:document.getElementById('f-platform').value,
+  };
+  extraCols.projects.forEach(c=>{
+    const el=document.getElementById('extra_projects_'+c.name);
+    if(el)data['_'+c.name]=el.value;
+  });
+  if(!data.name){alert('Project name required');return;}
+  if(id){const i=projects.findIndex(x=>x.id==id);if(i>-1)projects[i]={...projects[i],...data};}
+  else{data.id=Date.now();projects.push(data);}
+  closeModal('project-modal');
+  renderProjects();renderDashProjects();
+  showToast(id?'Project updated':'Project added');
+}
+
+function deleteProject(id){
+  if(!confirm('Delete this project?'))return;
+  projects=projects.filter(p=>p.id!==id);
+  renderProjects();renderDashProjects();
+  showToast('Project deleted');
+}
+
+// ── RISKS ───────────────────────────────────────────────────────
+function renderRisks(){
+  const el=document.getElementById('risks-list');
+  if(!risks.length){el.innerHTML='<div class="empty"><i class="ti ti-check"></i>No open risks</div>';return;}
+  el.innerHTML=risks.map(r=>{
+    const sev=r.sev==='high'?{col:'var(--red)',icon:'ti-alert-triangle',cls:'badge-red',label:'High'}:{col:'var(--amber)',icon:'ti-alert-circle',cls:'badge-amber',label:'Medium'};
+    return `<div class="risk-card ${r.sev}">
+      <i class="ti ${sev.icon}" style="font-size:18px;color:${sev.col};margin-top:1px;flex-shrink:0"></i>
+      <div style="flex:1">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
+          <span style="font-weight:500;font-size:13px">${r.title}</span>
+          <span class="badge ${sev.cls}" style="font-size:10px">${sev.label}</span>
+        </div>
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px">${r.detail}</div>
+        <div style="display:flex;gap:10px">
+          <span style="font-size:11px;color:var(--text-dim)"><i class="ti ti-folder" style="vertical-align:-2px"></i> ${r.project}</span>
+          ${r.owner?`<span style="font-size:11px;color:var(--text-dim)"><i class="ti ti-user" style="vertical-align:-2px"></i> ${r.owner}</span>`:''}
+        </div>
+      </div>
+      <div style="display:flex;gap:6px;flex-shrink:0">
+        <button class="act-btn act-btn-edit" onclick="openEditRiskModal(${r.id})"><i class="ti ti-edit"></i> Edit</button>
+        <button class="act-btn act-btn-delete" onclick="deleteRisk(${r.id})"><i class="ti ti-trash"></i> Delete</button>
+      </div>
+    </div>`;
+  }).join('');
+  document.getElementById('risk-count').textContent=risks.length;
+  document.getElementById('stat-risks-count').textContent=risks.length;
+}
+
+function openAddRiskModal(){
+  document.getElementById('risk-modal-title').textContent='Add Risk';
+  document.getElementById('risk-edit-id').value='';
+  ['r-title','r-project','r-owner','r-detail'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('r-sev').value='medium';
+  openModal('risk-modal');
+}
+
+function openEditRiskModal(id){
+  const r=risks.find(x=>x.id===id);if(!r)return;
+  document.getElementById('risk-modal-title').textContent='Edit Risk';
+  document.getElementById('risk-edit-id').value=id;
+  document.getElementById('r-sev').value=r.sev;
+  document.getElementById('r-title').value=r.title;
+  document.getElementById('r-detail').value=r.detail;
+  document.getElementById('r-project').value=r.project;
+  document.getElementById('r-owner').value=r.owner||'';
+  openModal('risk-modal');
+}
+
+function saveRisk(){
+  const id=document.getElementById('risk-edit-id').value;
+  const data={sev:document.getElementById('r-sev').value,title:document.getElementById('r-title').value.trim(),detail:document.getElementById('r-detail').value.trim(),project:document.getElementById('r-project').value.trim(),owner:document.getElementById('r-owner').value.trim()};
+  if(!data.title){alert('Title required');return;}
+  if(id){const i=risks.findIndex(x=>x.id==id);if(i>-1)risks[i]={...risks[i],...data};}
+  else{data.id=Date.now();risks.push(data);}
+  closeModal('risk-modal');renderRisks();renderDashRisks();
+  showToast(id?'Risk updated':'Risk added');
+}
+
+function deleteRisk(id){
+  if(!confirm('Mark as resolved and remove?'))return;
+  risks=risks.filter(r=>r.id!==id);renderRisks();renderDashRisks();showToast('Risk resolved');
+}
+
+// ── JENSON DELIVERIES ───────────────────────────────────────────
+function renderJenson(){
+  const cols=['Set','Categories','ETA','Status',...extraCols.jenson.map(c=>c.name),''];
+  document.getElementById('jenson-thead').innerHTML='<tr>'+cols.map((c,i)=>`<th${i===cols.length-1?' class="th-action"':''}>${c}</th>`).join('')+'</tr>';
+  const tbody=document.getElementById('jenson-tbody');
+  tbody.innerHTML=jensonSets.map(s=>{
+    const sc=statusConfig[s.status]||{label:s.status,cls:'badge-gray'};
+    const ext=extraCols.jenson.map(c=>`<td class="editable-cell" data-jid="${s.id}" data-col="${c.name}">${s['_'+c.name]||''}</td>`).join('');
+    return `<tr>
+      <td><b>${s.set}</b></td>
+      <td class="editable-cell" data-jid="${s.id}" data-col="categories" style="color:var(--text-muted)">${s.categories}</td>
+      <td class="editable-cell" data-jid="${s.id}" data-col="eta">${s.eta}</td>
+      <td><span class="badge ${sc.cls}">${sc.label}</span></td>
+      ${ext}
+      <td><div class="action-btns">
+        <button class="act-btn act-btn-edit" onclick="openEditDeliveryModal(${s.id})"><i class="ti ti-edit"></i> Edit</button>
+        <button class="act-btn act-btn-delete" onclick="deleteJensonSet(${s.id})"><i class="ti ti-trash"></i> Delete</button>
+      </div></td>
+    </tr>`;
+  }).join('');
+  tbody.querySelectorAll('.editable-cell').forEach(td=>{
+    td.addEventListener('dblclick',()=>{
+      const jid=+td.dataset.jid;const col=td.dataset.col;
+      const s=jensonSets.find(x=>x.id===jid);if(!s)return;
+      const key=['categories','eta'].includes(col)?col:'_'+col;
+      makeEditable(td,s[key]||'',(v)=>{s[key]=v;renderJenson();showToast('Updated');});
+    });
+  });
+}
+
+function openAddDeliveryModal(){
+  document.getElementById('delivery-modal-title').textContent='Add Delivery Set';
+  document.getElementById('del-edit-id').value='';
+  ['d-set','d-cats','d-eta'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('d-status').value='upcoming';
+  renderExtraFields('del-extra-fields','jenson',null);
+  openModal('delivery-modal');
+}
+
+function openEditDeliveryModal(id){
+  const s=jensonSets.find(x=>x.id===id);if(!s)return;
+  document.getElementById('delivery-modal-title').textContent='Edit Delivery Set';
+  document.getElementById('del-edit-id').value=id;
+  document.getElementById('d-set').value=s.set;
+  document.getElementById('d-cats').value=s.categories;
+  document.getElementById('d-eta').value=s.eta;
+  document.getElementById('d-status').value=s.status;
+  renderExtraFields('del-extra-fields','jenson',s);
+  openModal('delivery-modal');
+}
+
+function saveDelivery(){
+  const id=document.getElementById('del-edit-id').value;
+  const data={set:document.getElementById('d-set').value.trim(),categories:document.getElementById('d-cats').value.trim(),eta:document.getElementById('d-eta').value.trim(),status:document.getElementById('d-status').value};
+  extraCols.jenson.forEach(c=>{const el=document.getElementById('extra_jenson_'+c.name);if(el)data['_'+c.name]=el.value;});
+  if(!data.set){alert('Set label required');return;}
+  if(id){const i=jensonSets.findIndex(x=>x.id==id);if(i>-1)jensonSets[i]={...jensonSets[i],...data};}
+  else{data.id=Date.now();jensonSets.push(data);}
+  closeModal('delivery-modal');renderJenson();showToast(id?'Set updated':'Set added');
+}
+
+function deleteJensonSet(id){
+  if(!confirm('Delete this delivery set?'))return;
+  jensonSets=jensonSets.filter(s=>s.id!==id);renderJenson();showToast('Deleted');
+}
+
+// ── KEY DATES ───────────────────────────────────────────────────
+function renderKeyDates(){
+  const cols=['Date','Title','Detail',...extraCols.keydates.map(c=>c.name),''];
+  document.getElementById('keydates-thead').innerHTML='<tr>'+cols.map((c,i)=>`<th${i===cols.length-1?' class="th-action"':''}>${c}</th>`).join('')+'</tr>';
+  const tbody=document.getElementById('keydates-tbody');
+  const dotColor={normal:'var(--amber)',high:'var(--red)',teal:'var(--teal)'};
+  tbody.innerHTML=keyDates.map(k=>{
+    const ext=extraCols.keydates.map(c=>`<td class="editable-cell" data-kdid="${k.id}" data-col="${c.name}">${k['_'+c.name]||''}</td>`).join('');
+    return `<tr>
+      <td style="white-space:nowrap"><span style="display:inline-flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:${dotColor[k.priority]||dotColor.normal};flex-shrink:0;display:inline-block"></span>${k.date}</span></td>
+      <td class="editable-cell" data-kdid="${k.id}" data-col="title" style="font-weight:500">${k.title}</td>
+      <td class="editable-cell" data-kdid="${k.id}" data-col="detail" style="font-size:12px;color:var(--text-muted)">${k.detail}</td>
+      ${ext}
+      <td><div class="action-btns">
+        <button class="act-btn act-btn-edit" onclick="openEditKeyDateModal(${k.id})"><i class="ti ti-edit"></i> Edit</button>
+        <button class="act-btn act-btn-delete" onclick="deleteKeyDate(${k.id})"><i class="ti ti-trash"></i> Delete</button>
+      </div></td>
+    </tr>`;
+  }).join('');
+  tbody.querySelectorAll('.editable-cell').forEach(td=>{
+    td.addEventListener('dblclick',()=>{
+      const kdid=+td.dataset.kdid;const col=td.dataset.col;
+      const k=keyDates.find(x=>x.id===kdid);if(!k)return;
+      const key=['title','detail'].includes(col)?col:'_'+col;
+      makeEditable(td,k[key]||'',(v)=>{k[key]=v;renderKeyDates();showToast('Updated');});
+    });
+  });
+}
+
+function openAddKeyDateModal(){
+  document.getElementById('kd-modal-title').textContent='Add Key Date';
+  document.getElementById('kd-edit-id').value='';
+  ['kd-date','kd-title','kd-detail'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('kd-priority').value='normal';
+  renderExtraFields('kd-extra-fields','keydates',null);
+  openModal('keydate-modal');
+}
+
+function openEditKeyDateModal(id){
+  const k=keyDates.find(x=>x.id===id);if(!k)return;
+  document.getElementById('kd-modal-title').textContent='Edit Key Date';
+  document.getElementById('kd-edit-id').value=id;
+  document.getElementById('kd-date').value=k.date;
+  document.getElementById('kd-title').value=k.title;
+  document.getElementById('kd-detail').value=k.detail;
+  document.getElementById('kd-priority').value=k.priority;
+  renderExtraFields('kd-extra-fields','keydates',k);
+  openModal('keydate-modal');
+}
+
+function saveKeyDate(){
+  const id=document.getElementById('kd-edit-id').value;
+  const data={date:document.getElementById('kd-date').value.trim(),title:document.getElementById('kd-title').value.trim(),detail:document.getElementById('kd-detail').value.trim(),priority:document.getElementById('kd-priority').value};
+  extraCols.keydates.forEach(c=>{const el=document.getElementById('extra_keydates_'+c.name);if(el)data['_'+c.name]=el.value;});
+  if(!data.title){alert('Title required');return;}
+  if(id){const i=keyDates.findIndex(x=>x.id==id);if(i>-1)keyDates[i]={...keyDates[i],...data};}
+  else{data.id=Date.now();keyDates.push(data);}
+  closeModal('keydate-modal');renderKeyDates();showToast(id?'Updated':'Key date added');
+}
+
+function deleteKeyDate(id){
+  if(!confirm('Delete this key date?'))return;
+  keyDates=keyDates.filter(k=>k.id!==id);renderKeyDates();showToast('Deleted');
+}
+
+// ── CUSTOMERS ───────────────────────────────────────────────────
+const custStatusMap={
+  'in-progress':{label:'In Progress',cls:'badge-amber'},
+  'live':{label:'Live',cls:'badge-green'},
+  'pending':{label:'Awaiting Feedback',cls:'badge-blue'},
+  'blocked':{label:'Blocked',cls:'badge-red'},
+  'inactive':{label:'Inactive',cls:'badge-gray'},
+  'poc':{label:'POC — On Hold',cls:'badge-gray'},
+};
+
+function renderCustomers(){
+  const cols=['Customer','Platform','Data Feed','Export Type','Content','Config Profile','Status',...extraCols.customers.map(c=>c.name),''];
+  document.getElementById('customers-thead').innerHTML='<tr>'+cols.map((c,i)=>`<th${i===cols.length-1?' class="th-action"':''}>${c}</th>`).join('')+'</tr>';
+  const tbody=document.getElementById('customers-tbody');
+  tbody.innerHTML=customers.map(c=>{
+    const av=initials(c.name);const col=colorFor(c.name);
+    const sc=custStatusMap[c.status]||{label:c.status,cls:'badge-gray'};
+    const platCls=c.platform==='Shopify'?'badge-accent':'badge-gray';
+    const ext=extraCols.customers.map(ec=>`<td class="editable-cell" data-cid="${c.id}" data-col="${ec.name}">${c['_'+ec.name]||''}</td>`).join('');
+    return `<tr>
+      <td><div class="customer-name"><div class="cust-avatar" style="background:${col}20;color:${col}">${av}</div>${c.name}</div></td>
+      <td><span class="badge ${platCls}">${c.platform}</span></td>
+      <td class="editable-cell" data-cid="${c.id}" data-col="feed" style="color:var(--text-muted)">${c.feed||'-'}</td>
+      <td class="editable-cell" data-cid="${c.id}" data-col="export" style="color:var(--text-muted)">${c.export||'-'}</td>
+      <td class="editable-cell" data-cid="${c.id}" data-col="content" style="font-size:12px">${c.content}</td>
+      <td class="editable-cell" data-cid="${c.id}" data-col="config" style="font-size:12px;color:var(--text-muted)">${c.config}</td>
+      <td><span class="badge ${sc.cls}">${sc.label}</span></td>
+      ${ext}
+      <td><div class="action-btns">
+        <button class="act-btn act-btn-edit" onclick="openEditCustomerModal(${c.id})"><i class="ti ti-edit"></i> Edit</button>
+        <button class="act-btn act-btn-delete" onclick="deleteCustomer(${c.id})"><i class="ti ti-trash"></i> Delete</button>
+      </div></td>
+    </tr>`;
+  }).join('');
+  tbody.querySelectorAll('.editable-cell').forEach(td=>{
+    td.addEventListener('dblclick',()=>{
+      const cid=+td.dataset.cid;const col=td.dataset.col;
+      const c=customers.find(x=>x.id===cid);if(!c)return;
+      const key=['feed','export','content','config'].includes(col)?col:'_'+col;
+      makeEditable(td,c[key]||'',(v)=>{c[key]=v;renderCustomers();showToast('Updated');});
+    });
+  });
+}
+
+function openAddCustomerModal(){
+  document.getElementById('cust-modal-title').textContent='Add Customer Config';
+  document.getElementById('cust-edit-id').value='';
+  ['c-name','c-feed','c-export','c-content','c-config'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('c-platform').value='Shopify';
+  document.getElementById('c-status').value='in-progress';
+  renderExtraFields('cust-extra-fields','customers',null);
+  openModal('customer-modal');
+}
+
+function openEditCustomerModal(id){
+  const c=customers.find(x=>x.id===id);if(!c)return;
+  document.getElementById('cust-modal-title').textContent='Edit Customer Config';
+  document.getElementById('cust-edit-id').value=id;
+  document.getElementById('c-name').value=c.name;
+  document.getElementById('c-platform').value=c.platform;
+  document.getElementById('c-feed').value=c.feed;
+  document.getElementById('c-export').value=c.export;
+  document.getElementById('c-content').value=c.content;
+  document.getElementById('c-config').value=c.config;
+  document.getElementById('c-status').value=c.status;
+  renderExtraFields('cust-extra-fields','customers',c);
+  openModal('customer-modal');
+}
+
+function saveCustomer(){
+  const id=document.getElementById('cust-edit-id').value;
+  const data={name:document.getElementById('c-name').value.trim(),platform:document.getElementById('c-platform').value,feed:document.getElementById('c-feed').value.trim(),export:document.getElementById('c-export').value.trim(),content:document.getElementById('c-content').value.trim(),config:document.getElementById('c-config').value.trim(),status:document.getElementById('c-status').value};
+  extraCols.customers.forEach(c=>{const el=document.getElementById('extra_customers_'+c.name);if(el)data['_'+c.name]=el.value;});
+  if(!data.name){alert('Customer name required');return;}
+  if(id){const i=customers.findIndex(x=>x.id==id);if(i>-1)customers[i]={...customers[i],...data};}
+  else{data.id=Date.now();customers.push(data);}
+  closeModal('customer-modal');renderCustomers();showToast(id?'Customer updated':'Customer added');
+}
+
+function deleteCustomer(id){
+  if(!confirm('Delete this customer?'))return;
+  customers=customers.filter(c=>c.id!==id);renderCustomers();showToast('Deleted');
+}
+
+// ── ADD COLUMN ──────────────────────────────────────────────────
+function openAddColumnModal(target){
+  document.getElementById('col-target').value=target;
+  document.getElementById('col-name').value='';
+  document.getElementById('col-type').value='text';
+  document.getElementById('col-options').value='';
+  document.getElementById('col-options-wrap').style.display='none';
+  openModal('col-modal');
+}
+
+document.getElementById('col-type').addEventListener('change',function(){
+  document.getElementById('col-options-wrap').style.display=this.value==='select'?'block':'none';
+});
+
+function saveColumn(){
+  const target=document.getElementById('col-target').value;
+  const name=document.getElementById('col-name').value.trim();
+  const type=document.getElementById('col-type').value;
+  const options=document.getElementById('col-options').value.split(',').map(s=>s.trim()).filter(Boolean);
+  if(!name){alert('Column name required');return;}
+  if(extraCols[target].find(c=>c.name===name)){alert('Column already exists');return;}
+  extraCols[target].push({name,type,options});
+  closeModal('col-modal');
+  if(target==='projects')renderProjects();
+  else if(target==='jenson')renderJenson();
+  else if(target==='keydates')renderKeyDates();
+  else if(target==='customers')renderCustomers();
+  showToast(`Column "${name}" added`);
+}
+
+// Renders extra column fields inside modals
+function renderExtraFields(containerId, table, record){
+  const wrap=document.getElementById(containerId);
+  if(!extraCols[table].length){wrap.innerHTML='';return;}
+  wrap.innerHTML='<div class="divider"></div><div style="font-size:11px;color:var(--text-dim);margin-bottom:12px;font-weight:600;letter-spacing:0.5px">CUSTOM FIELDS</div>'+
+    extraCols[table].map(c=>{
+      const val=record?record['_'+c.name]||'':'';
+      const fid=`extra_${table}_${c.name}`;
+      if(c.type==='select'&&c.options.length){
+        return `<div class="form-group"><label class="form-label">${c.name}</label><select class="form-select" id="${fid}">${c.options.map(o=>`<option${val===o?' selected':''}>${o}</option>`).join('')}</select></div>`;
+      }
+      return `<div class="form-group"><label class="form-label">${c.name}</label><input class="form-input" id="${fid}" value="${val}"></div>`;
+    }).join('');
+}
+
+// ── DASHBOARD renders ────────────────────────────────────────────
+function renderDashProjects(){
+  const el=document.getElementById('dash-proj-list');
+  el.innerHTML=projects.filter(p=>p.ctype!=='Internal').slice(0,9).map(p=>{
+    const sc=statusConfig[p.status]||{label:p.status,cls:'badge-gray'};
+    const col=colorFor(p.customer);
     return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)">
       <div class="cust-avatar" style="background:${col}20;color:${col}">${initials(p.customer)}</div>
       <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500">${p.customer}</div><div style="font-size:11px;color:var(--text-muted)">${p.type}</div></div>
@@ -613,148 +1080,69 @@ function renderDashboardProjects() {
   }).join('');
 }
 
-function renderRisks() {
-  const el = document.getElementById('risks-list');
-  el.innerHTML = risks.map(r => {
-    const sev = r.sev === 'high' ? {col:'var(--red)',icon:'ti-alert-triangle',cls:'badge-red',label:'High'} : {col:'var(--amber)',icon:'ti-alert-circle',cls:'badge-amber',label:'Medium'};
-    return `<div class="card card-sm" style="border-left:3px solid ${sev.col};border-radius:0 var(--r-lg) var(--r-lg) 0">
-      <div style="display:flex;align-items:flex-start;gap:12px">
-        <i class="ti ${sev.icon}" style="font-size:18px;color:${sev.col};margin-top:1px;flex-shrink:0"></i>
-        <div style="flex:1">
-          <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px">
-            <span style="font-weight:500;font-size:13px">${r.title}</span>
-            <span class="badge ${sev.cls}" style="font-size:10px">${sev.label}</span>
-          </div>
-          <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px">${r.detail}</div>
-          <div style="display:flex;gap:10px">
-            <span style="font-size:11px;color:var(--text-dim)"><i class="ti ti-folder" style="vertical-align:-2px"></i> ${r.project}</span>
-            ${r.owner?`<span style="font-size:11px;color:var(--text-dim)"><i class="ti ti-user" style="vertical-align:-2px"></i> ${r.owner}</span>`:''}
-          </div>
-        </div>
-        <button class="icon-btn danger" onclick="deleteRisk(${r.id})"><i class="ti ti-trash"></i></button>
-      </div>
+function renderDashDeliveries(){
+  const el=document.getElementById('dash-deliveries-list');
+  const upcoming=jensonSets.filter(s=>s.status!=='delivered').slice(0,4);
+  const extra=keyDates.slice(0,2);
+  const all=[...upcoming.map(s=>({date:s.eta,title:`Jenson ${s.set}`,sub:s.categories.slice(0,50),col:'var(--amber)'})),...extra.map(k=>({date:k.date,title:k.title,sub:k.detail.slice(0,50),col:k.priority==='high'?'var(--red)':k.priority==='teal'?'var(--teal)':'var(--amber)'}))].slice(0,6);
+  el.innerHTML=all.map(d=>`<div class="delivery-item">
+    <div class="delivery-date">${d.date.replace(' ','<br>')}</div>
+    <div class="delivery-dot" style="background:${d.col}"></div>
+    <div class="delivery-body"><div class="delivery-title">${d.title}</div><div class="delivery-sub">${d.sub}</div></div>
+  </div>`).join('');
+}
+
+function renderDashRisks(){
+  const el=document.getElementById('dash-risks-list');
+  el.innerHTML=risks.slice(0,6).map(r=>{
+    const col=r.sev==='high'?'var(--red)':'var(--amber)';
+    const icon=r.sev==='high'?'ti-alert-triangle':'ti-alert-circle';
+    return `<div class="risk-card ${r.sev}" style="border-radius:var(--r)">
+      <i class="ti ${icon}" style="color:${col};font-size:16px;margin-top:1px;flex-shrink:0"></i>
+      <div><div style="font-size:13px;font-weight:500;margin-bottom:3px">${r.title}</div><div style="font-size:11px;color:var(--text-muted)">${r.detail.slice(0,80)}…</div></div>
     </div>`;
   }).join('');
-  document.getElementById('risk-count').textContent = risks.length;
+  document.getElementById('stat-risks-count').textContent=risks.length;
 }
 
-function filterProjects(filter, el) {
-  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
-  renderProjects(filter);
-}
-
-function showPage(name, el) {
+// ── PAGE NAVIGATION ──────────────────────────────────────────────
+function showPage(name,el){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
   document.getElementById('page-'+name).classList.add('active');
-  if(el) el.classList.add('active');
-  const titles = {dashboard:'Dashboard',projects:'Projects',deliveries:'Deliveries',risks:'Risks & Blockers',customers:'Customer Configuration'};
-  document.getElementById('page-title').textContent = titles[name]||name;
-  if(name==='projects') renderProjects();
-  if(name==='risks') renderRisks();
+  if(el)el.classList.add('active');
+  const titles={dashboard:'Dashboard',projects:'Projects',deliveries:'Deliveries',risks:'Risks & Blockers',customers:'Customer Configuration'};
+  document.getElementById('page-title').textContent=titles[name]||name;
+  if(name==='projects')renderProjects();
+  if(name==='risks')renderRisks();
+  if(name==='deliveries'){renderJenson();renderKeyDates();}
+  if(name==='customers')renderCustomers();
 }
 
-function openAddModal() {
-  document.getElementById('modal-title').textContent = 'Add Project';
-  ['edit-id','f-name','f-customer','f-export','f-content','f-owners','f-next','f-notes','f-linear'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('f-type').value='Onboarding';
-  document.getElementById('f-status').value='in-progress';
-  document.getElementById('f-ctype').value='Trial';
-  document.getElementById('f-platform').value='Shopify';
-  document.getElementById('project-modal').classList.add('open');
+function globalSearch(q){
+  if(!q.trim()){renderProjects();return;}
+  q=q.toLowerCase();
+  showPage('projects',document.querySelectorAll('.nav-item')[1]);
+  projFilter='all';
+  document.querySelectorAll('.filter-chip').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.filter-chip')[0].classList.add('active');
+  const cols=7+extraCols.projects.length+1;
+  const list=projects.filter(p=>p.name.toLowerCase().includes(q)||p.customer.toLowerCase().includes(q)||(p.owners||'').toLowerCase().includes(q)||(p.content||'').toLowerCase().includes(q)||(p.next||'').toLowerCase().includes(q));
+  const tbody=document.getElementById('projects-tbody');
+  if(!list.length){tbody.innerHTML=`<tr><td colspan="${cols}"><div class="empty"><i class="ti ti-search"></i>No results for "${q}"</div></td></tr>`;return;}
+  renderProjects();
 }
 
-function editProject(id) {
-  const p = projects.find(x=>x.id===id); if(!p) return;
-  document.getElementById('modal-title').textContent = 'Edit Project';
-  document.getElementById('edit-id').value = id;
-  document.getElementById('f-name').value = p.name;
-  document.getElementById('f-customer').value = p.customer;
-  document.getElementById('f-type').value = p.type;
-  document.getElementById('f-status').value = p.status;
-  document.getElementById('f-ctype').value = p.ctype;
-  document.getElementById('f-export').value = p.export;
-  document.getElementById('f-content').value = p.content;
-  document.getElementById('f-owners').value = p.owners;
-  document.getElementById('f-next').value = p.next;
-  document.getElementById('f-notes').value = p.notes;
-  document.getElementById('f-linear').value = p.linear;
-  document.getElementById('f-platform').value = p.platform;
-  document.getElementById('project-modal').classList.add('open');
-}
+// close on overlay click
+document.querySelectorAll('.modal-overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.remove('open');}));
 
-function saveProject() {
-  const id = document.getElementById('edit-id').value;
-  const data = {
-    name: document.getElementById('f-name').value.trim(),
-    customer: document.getElementById('f-customer').value.trim(),
-    type: document.getElementById('f-type').value,
-    status: document.getElementById('f-status').value,
-    ctype: document.getElementById('f-ctype').value,
-    export: document.getElementById('f-export').value.trim(),
-    content: document.getElementById('f-content').value.trim(),
-    owners: document.getElementById('f-owners').value.trim(),
-    next: document.getElementById('f-next').value.trim(),
-    notes: document.getElementById('f-notes').value.trim(),
-    linear: document.getElementById('f-linear').value.trim(),
-    platform: document.getElementById('f-platform').value,
-  };
-  if(!data.name){ alert('Project name required'); return; }
-  if(id) { const i = projects.findIndex(x=>x.id==id); if(i>-1) projects[i]={...projects[i],...data}; }
-  else { data.id = Date.now(); projects.push(data); }
-  closeModal('project-modal');
-  renderProjects(); renderDashboardProjects();
-  document.getElementById('stat-total').textContent = projects.length;
-  showToast(id ? 'Project updated' : 'Project added');
-}
-
-function deleteProject(id) {
-  if(!confirm('Delete this project?')) return;
-  projects = projects.filter(p=>p.id!==id);
-  renderProjects(); renderDashboardProjects();
-  document.getElementById('stat-total').textContent = projects.length;
-  showToast('Project deleted');
-}
-
-function deleteRisk(id) {
-  if(!confirm('Mark this risk as resolved?')) return;
-  risks = risks.filter(r=>r.id!==id);
-  renderRisks();
-  showToast('Risk resolved');
-}
-
-function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  document.getElementById('toast-msg').textContent = msg;
-  t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'), 2500);
-}
-
-function globalSearch(q) {
-  if(!q.trim()) { renderProjects(); return; }
-  q = q.toLowerCase();
-  const tbody = document.getElementById('projects-tbody');
-  const list = projects.filter(p =>
-    p.name.toLowerCase().includes(q) || p.customer.toLowerCase().includes(q) ||
-    p.owners.toLowerCase().includes(q) || p.content.toLowerCase().includes(q) ||
-    p.next.toLowerCase().includes(q)
-  );
-  if(!list.length){ tbody.innerHTML='<tr><td colspan="8"><div class="empty"><i class="ti ti-search"></i>No results for "'+q+'"</div></td></tr>'; return; }
-  const filter = document.querySelector('.filter-chip.active')?.textContent?.toLowerCase()||'all';
-  // show projects page
-  showPage('projects', document.querySelector('.nav-item:nth-child(4)'));
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  document.querySelectorAll('.nav-item')[1].classList.add('active');
-}
-
-// Init
-renderDashboardProjects();
-document.getElementById('stat-total').textContent = projects.length;
-// close modals on overlay click
-document.querySelectorAll('.modal-overlay').forEach(o => o.addEventListener('click', e => { if(e.target===o) o.classList.remove('open'); }));
+// ── INIT ─────────────────────────────────────────────────────────
+renderDashProjects();
+renderDashDeliveries();
+renderDashRisks();
+document.getElementById('stat-total').textContent=projects.length;
+document.getElementById('proj-count').textContent=projects.length;
+document.getElementById('risk-count').textContent=risks.length;
 </script>
 </body>
 </html>
